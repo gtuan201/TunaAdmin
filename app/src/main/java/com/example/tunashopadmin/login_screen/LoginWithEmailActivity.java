@@ -1,4 +1,4 @@
-package com.example.tunashopadmin;
+package com.example.tunashopadmin.login_screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityLoginWithEmailBinding;
 import com.example.tunashopadmin.viewmodel.LoginViewModel;
 
@@ -23,7 +24,7 @@ public class LoginWithEmailActivity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setMessage("Vui lòng đợi");
         loginViewModel = new LoginViewModel(getApplication());
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_login_with_email);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login_with_email);
         binding.btBackEmail.setOnClickListener(v -> onBackPressed());
         binding.etEmail.setOnFocusChangeListener((v, hasFocus) -> binding.btLoginEmail.setBackgroundResource(R.drawable.button_custom4));
         binding.etPassword.setOnFocusChangeListener((v, hasFocus) -> binding.btLoginEmail.setBackgroundResource(R.drawable.button_custom4));

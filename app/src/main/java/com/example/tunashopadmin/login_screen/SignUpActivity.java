@@ -1,8 +1,10 @@
-package com.example.tunashopadmin;
+package com.example.tunashopadmin.login_screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.tunashopadmin.R;
 
 public class SignUpActivity extends AppCompatActivity {
 

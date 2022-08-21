@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TunaShopAdmin">
         <activity
-            android:name=".LoginWithEmailActivity"
+            android:name=".login_screen.LoginWithEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginWithPhoneNumberActivity"
+            android:name=".login_screen.LoginWithPhoneNumberActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".login_screen.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".login_screen.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".splash_screen.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
