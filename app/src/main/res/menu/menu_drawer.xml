@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/order_list"
+            android:title="Đơn hàng"
+            android:icon="@drawable/packinglist"/>
+        <item android:id="@+id/voucher"
+            android:title="Khuyến mãi"
+            android:icon="@drawable/tag"/>
+        <item android:id="@+id/chat"
+            android:icon="@drawable/chat"
+            android:title="Nhắn tin"/>
+        <item android:id="@+id/wallet"
+            android:title="Doanh thu"
+            android:icon="@drawable/wallet"/>
+    </group>
+    <item android:title="Quản lý">
+        <menu>
+            <item android:title="Quản lý menu"
+                android:id="@+id/menu_manager"/>
+            <item android:title="Quản lý nhân viên"
+                android:id="@+id/staff_manager"/>
+        </menu>
+    </item>
+    <item android:title="Thêm">
+        <menu>
+            <item android:title="Thông báo"
+                android:id="@+id/notification"/>
+            <item android:title="Cài đặt"
+                android:id="@+id/setting"/>
+        </menu>
+    </item>
+
+</menu>
