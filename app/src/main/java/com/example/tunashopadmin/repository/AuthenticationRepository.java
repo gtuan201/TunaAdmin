@@ -1,4 +1,4 @@
-package com.example.tunashopadmin;
+package com.example.tunashopadmin.repository;
 
 import android.app.Application;
 import android.app.ProgressDialog;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.tunashopadmin.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -95,7 +96,7 @@ public class AuthenticationRepository {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String userType = ""+snapshot.child("userType").getValue();
                         if (userType.equals("admin")){
-                            Intent intent = new Intent(application,MainActivity.class);
+                            Intent intent = new Intent(application, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             application.startActivity(intent);
                         }
