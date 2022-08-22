@@ -8,4 +8,5 @@
     <string name="closeDrawer">Close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="noti_order">Phải lưu ý phân biệt giữa đơn hàng đến lấy và đơn hàng phải giao. Đơn hàng phải giao nên ưu tiên hơn !</string>
 </resources>

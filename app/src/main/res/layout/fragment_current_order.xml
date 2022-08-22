@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.CurrentOrderFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Current" />
+        android:layout_height="match_parent">
+        <TextView
+            android:text="@string/noti_order"
+            android:textSize="13sp"
+            android:padding="7dp"
+            android:background="#77FBDDD4"
+            android:drawablePadding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/bell" />
+        <TextView
+            android:text="Danh sách đơn hàng đã đặt"
+            android:layout_marginVertical="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rev_current_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-</FrameLayout>
+    </LinearLayout>
+</layout>
