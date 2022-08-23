@@ -90,6 +90,7 @@ public class AuthenticationRepository {
     private void checkUser() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
         FirebaseUser user = auth.getCurrentUser();
+        assert user != null;
         reference.child(user.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

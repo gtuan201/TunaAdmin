@@ -1,5 +1,6 @@
 package com.example.tunashopadmin.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tunashopadmin.OrderDetailActivity;
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.adapter.CurrentOrderAdapter;
 import com.example.tunashopadmin.databinding.FragmentCurrentOrderBinding;
@@ -25,7 +27,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CurrentOrderFragment extends Fragment {
-    FragmentCurrentOrderBinding binding;
+    private FragmentCurrentOrderBinding binding;
     private CurrentOrderAdapter adapter;
 
     @Override
@@ -37,12 +39,9 @@ public class CurrentOrderFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         binding.revCurrentOrder.setLayoutManager(manager);
         OrderViewModel orderViewModel = new ViewModelProvider((ViewModelStoreOwner) requireContext()).get(OrderViewModel.class);
-        orderViewModel.getListMutableLiveData().observe((LifecycleOwner) requireContext(), new Observer<List<Order>>() {
-            @Override
-            public void onChanged(List<Order> orders) {
-                adapter = new CurrentOrderAdapter(orders,getContext());
-                binding.revCurrentOrder.setAdapter(adapter);
-            }
+        orderViewModel.getListMutableLiveData().observe((LifecycleOwner) requireContext(), orders -> {
+            adapter = new CurrentOrderAdapter(orders,getContext());
+            binding.revCurrentOrder.setAdapter(adapter);
         });
         return view;
     }

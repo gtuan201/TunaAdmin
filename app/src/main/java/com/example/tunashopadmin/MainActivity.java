@@ -1,6 +1,8 @@
 package com.example.tunashopadmin;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -18,8 +20,10 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.tunashopadmin.databinding.ActivityMainBinding;
 import com.example.tunashopadmin.fragment.ChatFragment;
+import com.example.tunashopadmin.fragment.CurrentOrderFragment;
 import com.example.tunashopadmin.fragment.OrderListFragment;
 import com.example.tunashopadmin.fragment.VoucherFragment;
+import com.example.tunashopadmin.login_screen.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -54,9 +58,9 @@ public class MainActivity extends AppCompatActivity{
         toggle.syncState();
         binding.navDrawerView.setItemIconTintList(null);
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.container_fragment,orderListFragment).commit();
-        replaceFragment(voucherFragment);
-        replaceFragment(chatFragment);
+        fragmentManager.beginTransaction().add(R.id.container_fragment,orderListFragment,"0").commit();
+        fragmentManager.beginTransaction().add(R.id.container_fragment,voucherFragment,"1").hide(voucherFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.container_fragment,chatFragment,"2").hide(chatFragment).commit();
         inforUser();
         binding.navDrawerView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -112,10 +116,5 @@ public class MainActivity extends AppCompatActivity{
 
                     }
                 });
-    }
-
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.container_fragment,fragment).hide(fragment).commit();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.tunashopadmin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tunashopadmin.OrderDetailActivity;
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.model.Order;
 
@@ -44,6 +46,18 @@ public class CurrentOrderAdapter extends RecyclerView.Adapter<CurrentOrderAdapte
         holder.time.setText(order.getTime());
         holder.date.setText(order.getDate());
         holder.totalPrice.setText(String.format("%sđ", order.getTotalprice()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, OrderDetailActivity.class);
+                intent.putExtra("id",order.getId());
+                intent.putExtra("uid",order.getUid());
+                intent.putExtra("name",order.getFullname());
+                intent.putExtra("address",order.getAddress());
+                intent.putExtra("phoneNumber",order.getPhoneNumber());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

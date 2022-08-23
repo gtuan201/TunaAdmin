@@ -4,15 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable-v24/button_custom4.xml" value="0.1485" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1485" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/button_custom.xml" value="0.1485" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/button_custom2.xml" value="0.1485" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/button_custom3.xml" value="0.1485" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/edit_text_custom.xml" value="0.1485" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1485" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/text_selector.xml" value="0.1485" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_login_with_email.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_login_with_phone_number.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_order_detail.xml" value="0.264" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/fragment_cancel_order.xml" value="0.25416666666666665" />
@@ -23,6 +26,7 @@
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/layout_header.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/row_rev_current.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/menu/menu_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1485" />
       </map>
     </option>
   </component>
