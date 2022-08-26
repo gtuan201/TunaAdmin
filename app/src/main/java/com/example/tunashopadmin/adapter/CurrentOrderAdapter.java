@@ -46,17 +46,11 @@ public class CurrentOrderAdapter extends RecyclerView.Adapter<CurrentOrderAdapte
         holder.time.setText(order.getTime());
         holder.date.setText(order.getDate());
         holder.totalPrice.setText(String.format("%sđ", order.getTotalprice()));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, OrderDetailActivity.class);
-                intent.putExtra("id",order.getId());
-                intent.putExtra("uid",order.getUid());
-                intent.putExtra("name",order.getFullname());
-                intent.putExtra("address",order.getAddress());
-                intent.putExtra("phoneNumber",order.getPhoneNumber());
-                context.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, OrderDetailActivity.class);
+            intent.putExtra("id",order.getId());
+            intent.putExtra("uid",order.getUid());
+            context.startActivity(intent);
         });
     }
 
