@@ -16,10 +16,13 @@ import java.util.List;
 
 public class OrderViewModel extends ViewModel {
     private final MutableLiveData<List<Order>> listMutableLiveData;
+    private final MutableLiveData<List<Order>> cancelListMutableLiveData;
+    private final List<Order> cancelList = new ArrayList<>();
     private final List<Order> orderList = new ArrayList<>();
 
     public OrderViewModel() {
         listMutableLiveData = new MutableLiveData<>();
+        cancelListMutableLiveData = new MutableLiveData<>();
         initData();
     }
 
@@ -60,7 +63,7 @@ public class OrderViewModel extends ViewModel {
                                 orderList.add(order);
                             }
                         }
-                        listMutableLiveData.setValue(orderList);
+                        listMutableLiveData.postValue(orderList);
                     }
 
                     @Override
@@ -68,6 +71,43 @@ public class OrderViewModel extends ViewModel {
 
                     }
                 });
+    }
+
+    public MutableLiveData<List<Order>> getCancelListMutableLiveData() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Bill");
+        reference.child("customer")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        cancelList.clear();
+                        for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                            String id = ""+dataSnapshot.child("id").getValue();
+                            String uid = ""+dataSnapshot.child("uid").getValue();
+                            String name = ""+dataSnapshot.child("fullname").getValue();
+                            String totalPrice = ""+dataSnapshot.child("totalPrice").getValue();
+                            String status = ""+dataSnapshot.child("status").getValue();
+                            String timeCancel = ""+dataSnapshot.child("timeCancel").getValue();
+                            String reason = ""+dataSnapshot.child("reason").getValue();
+                            if (status.equals("Đã hủy bởi admin")) {
+                                Order order = new Order();
+                                order.setId(id);
+                                order.setUid(uid);
+                                order.setFullname(name);
+                                order.setTimeCancel(timeCancel);
+                                order.setTotalprice(totalPrice);
+                                order.setReason(reason);
+                                cancelList.add(order);
+                            }
+                            cancelListMutableLiveData.postValue(cancelList);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+        return cancelListMutableLiveData;
     }
 
     public MutableLiveData<List<Order>> getListMutableLiveData() {

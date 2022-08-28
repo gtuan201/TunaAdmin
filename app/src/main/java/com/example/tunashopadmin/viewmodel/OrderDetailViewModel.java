@@ -107,7 +107,7 @@ public class OrderDetailViewModel extends ViewModel {
                             coffee.setTotalPrice(price);
                             coffeeList.add(coffee);
                         }
-                        listCoffeeMutableLiveData.setValue(coffeeList);
+                        listCoffeeMutableLiveData.postValue(coffeeList);
                     }
 
                     @Override
