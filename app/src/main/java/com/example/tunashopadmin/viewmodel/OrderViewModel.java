@@ -17,12 +17,15 @@ import java.util.List;
 public class OrderViewModel extends ViewModel {
     private final MutableLiveData<List<Order>> listMutableLiveData;
     private final MutableLiveData<List<Order>> cancelListMutableLiveData;
+    private final MutableLiveData<List<Order>> historyOrderMutableLiveData;
     private final List<Order> cancelList = new ArrayList<>();
     private final List<Order> orderList = new ArrayList<>();
+    private final List<Order> historyList = new ArrayList<>();
 
     public OrderViewModel() {
         listMutableLiveData = new MutableLiveData<>();
         cancelListMutableLiveData = new MutableLiveData<>();
+        historyOrderMutableLiveData = new MutableLiveData<>();
         initData();
     }
 
@@ -108,6 +111,49 @@ public class OrderViewModel extends ViewModel {
                     }
                 });
         return cancelListMutableLiveData;
+    }
+
+    public MutableLiveData<List<Order>> getHistoryOrderMutableLiveData() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Bill");
+        reference.child("customer")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        historyList.clear();
+                        for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                            String id = ""+dataSnapshot.child("id").getValue();
+                            String uid = ""+dataSnapshot.child("uid").getValue();
+                            String name = ""+dataSnapshot.child("fullname").getValue();
+                            String totalPrice = ""+dataSnapshot.child("totalPrice").getValue();
+                            String phone = ""+dataSnapshot.child("phone").getValue();
+                            String status = ""+dataSnapshot.child("status").getValue();
+                            String timeComplete = ""+dataSnapshot.child("timeComplete").getValue();
+                            String dateComplete = ""+dataSnapshot.child("dateComplete").getValue();
+                            String time = ""+dataSnapshot.child("time").getValue();
+                            String date = ""+dataSnapshot.child("date").getValue();
+                            if (status.equals("Đã hoàn thành")){
+                                Order order = new Order();
+                                order.setId(id);
+                                order.setUid(uid);
+                                order.setFullname(name);
+                                order.setPhoneNumber(phone);
+                                order.setTotalprice(totalPrice);
+                                order.setTime(time);
+                                order.setDate(date);
+                                order.setDateCComplete(dateComplete);
+                                order.setTimeCompleteOrder(timeComplete);
+                                historyList.add(order);
+                            }
+                            historyOrderMutableLiveData.postValue(historyList);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+        return historyOrderMutableLiveData;
     }
 
     public MutableLiveData<List<Order>> getListMutableLiveData() {
