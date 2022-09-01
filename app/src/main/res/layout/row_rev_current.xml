@@ -81,6 +81,14 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:text="Price" />
+
+            <ImageView
+                android:id="@+id/img_method"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

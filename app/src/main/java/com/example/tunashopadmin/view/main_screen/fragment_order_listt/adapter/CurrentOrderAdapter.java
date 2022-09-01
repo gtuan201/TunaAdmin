@@ -1,20 +1,20 @@
-package com.example.tunashopadmin.adapter;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tunashopadmin.OrderDetailActivity;
+import com.example.tunashopadmin.view.order_detail_screen.OrderDetailActivity;
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.model.Order;
 
-import java.lang.invoke.LambdaConversionException;
 import java.util.List;
 
 public class CurrentOrderAdapter extends RecyclerView.Adapter<CurrentOrderAdapter.CurrentOrderViewHolder>{
@@ -46,6 +46,12 @@ public class CurrentOrderAdapter extends RecyclerView.Adapter<CurrentOrderAdapte
         holder.time.setText(order.getTime());
         holder.date.setText(order.getDate());
         holder.totalPrice.setText(String.format("%sđ", order.getTotalprice()));
+        if (order.getPurchaseMethod().equals("ship")){
+            holder.imgMethod.setImageResource(R.drawable.food);
+        }
+        else if (order.getPurchaseMethod().equals("pick up")){
+            holder.imgMethod.setImageResource(R.drawable.shop);
+        }
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, OrderDetailActivity.class);
             intent.putExtra("id",order.getId());
@@ -69,6 +75,7 @@ public class CurrentOrderAdapter extends RecyclerView.Adapter<CurrentOrderAdapte
         private final TextView time;
         private final TextView date;
         private final TextView totalPrice;
+        private final ImageView imgMethod;
         public CurrentOrderViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name_current);
@@ -77,6 +84,7 @@ public class CurrentOrderAdapter extends RecyclerView.Adapter<CurrentOrderAdapte
             time = itemView.findViewById(R.id.time_current);
             date = itemView.findViewById(R.id.date_current);
             totalPrice = itemView.findViewById(R.id.total_current);
+            imgMethod = itemView.findViewById(R.id.img_method);
         }
     }
 }

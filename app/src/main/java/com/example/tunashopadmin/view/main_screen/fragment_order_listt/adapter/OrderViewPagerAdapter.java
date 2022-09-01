@@ -1,13 +1,13 @@
-package com.example.tunashopadmin.adapter;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.tunashopadmin.fragment.CancelOrderFragment;
-import com.example.tunashopadmin.fragment.CurrentOrderFragment;
-import com.example.tunashopadmin.fragment.OlderOrderFragment;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.child_of_order_list.CancelOrderFragment;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.child_of_order_list.CurrentOrderFragment;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.child_of_order_list.OlderOrderFragment;
 
 public class OrderViewPagerAdapter extends FragmentStateAdapter {
     public OrderViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {

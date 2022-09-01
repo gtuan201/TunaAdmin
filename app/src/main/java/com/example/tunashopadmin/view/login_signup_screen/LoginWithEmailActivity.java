@@ -1,4 +1,4 @@
-package com.example.tunashopadmin.login_screen;
+package com.example.tunashopadmin.view.login_signup_screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

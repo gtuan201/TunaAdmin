@@ -1,4 +1,4 @@
-package com.example.tunashopadmin.fragment;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt.child_of_order_list;
 
 import android.os.Bundle;
 
@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,11 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tunashopadmin.R;
-import com.example.tunashopadmin.adapter.CancelOrderAdapter;
-import com.example.tunashopadmin.model.Order;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter.CancelOrderAdapter;
 import com.example.tunashopadmin.viewmodel.OrderViewModel;
-
-import java.util.List;
 
 public class CancelOrderFragment extends Fragment {
     private CancelOrderAdapter adapter;
@@ -34,7 +30,7 @@ public class CancelOrderFragment extends Fragment {
         binding.revCancelOrder.setLayoutManager(manager);
         OrderViewModel viewModel = new ViewModelProvider((ViewModelStoreOwner) requireContext()).get(OrderViewModel.class);
         viewModel.getCancelListMutableLiveData().observe((LifecycleOwner) requireContext(), orderList -> {
-            adapter = new CancelOrderAdapter(orderList);
+            adapter = new CancelOrderAdapter(orderList, getContext());
             binding.revCancelOrder.setAdapter(adapter);
         });
         return view;

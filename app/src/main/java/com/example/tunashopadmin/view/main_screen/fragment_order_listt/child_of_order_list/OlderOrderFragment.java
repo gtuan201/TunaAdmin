@@ -1,4 +1,4 @@
-package com.example.tunashopadmin.fragment;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt.child_of_order_list;
 
 import android.os.Bundle;
 
@@ -14,11 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tunashopadmin.R;
-import com.example.tunashopadmin.adapter.HistoryOrderAdapter;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter.HistoryOrderAdapter;
 import com.example.tunashopadmin.databinding.FragmentOlderOrderBinding;
 import com.example.tunashopadmin.viewmodel.OrderViewModel;
-
-import java.util.List;
 
 public class OlderOrderFragment extends Fragment {
     private HistoryOrderAdapter adapter;

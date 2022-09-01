@@ -57,6 +57,7 @@ public class OrderViewModel extends ViewModel {
                                 order.setTime(time);
                                 order.setDate(date);
                                 order.setTotalprice(totalPrice);
+                                order.setPurchaseMethod(method);
                                 if (method.equals("ship")){
                                     order.setAddress(address);
                                 }
@@ -91,7 +92,7 @@ public class OrderViewModel extends ViewModel {
                             String status = ""+dataSnapshot.child("status").getValue();
                             String timeCancel = ""+dataSnapshot.child("timeCancel").getValue();
                             String reason = ""+dataSnapshot.child("reason").getValue();
-                            if (status.equals("Đã hủy bởi admin")) {
+                            if (status.equals("Đã hủy")) {
                                 Order order = new Order();
                                 order.setId(id);
                                 order.setUid(uid);

@@ -1,13 +1,11 @@
-package com.example.tunashopadmin.adapter;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.RowRevHistoryOrderBinding;
 import com.example.tunashopadmin.model.Order;
 

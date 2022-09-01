@@ -1,4 +1,4 @@
-package com.example.tunashopadmin.fragment;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt;
 
 import android.os.Bundle;
 
@@ -10,10 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tunashopadmin.adapter.OrderViewPagerAdapter;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter.OrderViewPagerAdapter;
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.FragmentOrderListBinding;
-import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class OrderListFragment extends Fragment {

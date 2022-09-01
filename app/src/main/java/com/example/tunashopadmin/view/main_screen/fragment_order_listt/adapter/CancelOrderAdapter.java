@@ -1,6 +1,9 @@
-package com.example.tunashopadmin.adapter;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,14 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tunashopadmin.databinding.RowRevCancelBinding;
 import com.example.tunashopadmin.model.Order;
+import com.example.tunashopadmin.view.cancel_detail_screen.CancelDetailActivity;
 
 import java.util.List;
 
 public class CancelOrderAdapter extends RecyclerView.Adapter<CancelOrderAdapter.CancelOrderViewHolder>{
     private final List<Order> list;
+    private final Context context;
 
-    public CancelOrderAdapter(List<Order> list) {
+    public CancelOrderAdapter(List<Order> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -36,6 +42,14 @@ public class CancelOrderAdapter extends RecyclerView.Adapter<CancelOrderAdapter.
         holder.binding.priceCancel.setText(String.format("%sđ", order.getTotalprice()));
         holder.binding.reasonCancel.setText(String.format("Lý do hủy: %s", order.getReason()));
         holder.binding.timeCancel.setText(String.format("Thời gian hủy: %s", order.getTimeCancel()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CancelDetailActivity.class);
+                intent.putExtra("id",order.getId());
+                context.startActivity(intent);
+            }
+        });
 
     }
 

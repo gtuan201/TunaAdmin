@@ -3,12 +3,12 @@ package com.example.tunashopadmin.model;
 import java.util.List;
 
 public class Order {
-    String id,uid,fullname,address,shopname,totalprice,phoneNumber,purchaseMethod,status,date,time,timeCompleteOrder,dateCComplete,timeCancel,reason;
+    String id,uid,fullname,address,shopname,totalprice,phoneNumber,purchaseMethod,status,date,time,timeCompleteOrder,dateCComplete,timeCancel,reason,note;
 
     public Order() {
     }
 
-    public Order(String id, String uid, String fullname, String address, String shopname, String totalprice, String phoneNumber, String purchaseMethod, String status, String date, String time, String timeCompleteOrder, String dateCComplete, String timeCancel, String reason) {
+    public Order(String id, String uid, String fullname, String address, String shopname, String totalprice, String phoneNumber, String purchaseMethod, String status, String date, String time, String timeCompleteOrder, String dateCComplete, String timeCancel, String reason, String note) {
         this.id = id;
         this.uid = uid;
         this.fullname = fullname;
@@ -24,6 +24,7 @@ public class Order {
         this.dateCComplete = dateCComplete;
         this.timeCancel = timeCancel;
         this.reason = reason;
+        this.note = note;
     }
 
     public String getId() {
@@ -144,5 +145,13 @@ public class Order {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

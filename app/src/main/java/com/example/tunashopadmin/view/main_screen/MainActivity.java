@@ -1,13 +1,7 @@
-package com.example.tunashopadmin;
+package com.example.tunashopadmin.view.main_screen;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,13 +12,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityMainBinding;
 import com.example.tunashopadmin.fragment.ChatFragment;
-import com.example.tunashopadmin.fragment.CurrentOrderFragment;
-import com.example.tunashopadmin.fragment.OrderListFragment;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.OrderListFragment;
 import com.example.tunashopadmin.fragment.VoucherFragment;
-import com.example.tunashopadmin.login_screen.LoginActivity;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

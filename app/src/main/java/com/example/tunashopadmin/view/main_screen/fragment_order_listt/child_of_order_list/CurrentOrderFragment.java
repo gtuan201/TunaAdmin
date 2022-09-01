@@ -1,13 +1,11 @@
-package com.example.tunashopadmin.fragment;
+package com.example.tunashopadmin.view.main_screen.fragment_order_listt.child_of_order_list;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,15 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tunashopadmin.OrderDetailActivity;
 import com.example.tunashopadmin.R;
-import com.example.tunashopadmin.adapter.CurrentOrderAdapter;
+import com.example.tunashopadmin.view.main_screen.fragment_order_listt.adapter.CurrentOrderAdapter;
 import com.example.tunashopadmin.databinding.FragmentCurrentOrderBinding;
-import com.example.tunashopadmin.model.Order;
 import com.example.tunashopadmin.viewmodel.OrderViewModel;
-
-import java.util.List;
-import java.util.Objects;
 
 public class CurrentOrderFragment extends Fragment {
     private FragmentCurrentOrderBinding binding;

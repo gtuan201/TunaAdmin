@@ -1,4 +1,4 @@
-package com.example.tunashopadmin.adapter;
+package com.example.tunashopadmin.view.order_detail_screen;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -34,7 +34,6 @@ public class CurrentCoffeeOrderAdapter extends RecyclerView.Adapter<CurrentCoffe
         holder.binding.sizeIceCurrent.setText(String.format("( Size: %s, Đá: %s )", coffee.getSize(), coffee.getIce()));
         holder.binding.quantityCurrent.setText(String.format("x%s",coffee.getQuantity()));
         holder.binding.totalPriceCurrent.setText(String.format("%sđ",coffee.getTotalPrice()));
-
     }
 
     @Override

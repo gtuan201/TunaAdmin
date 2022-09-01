@@ -1,30 +1,22 @@
-package com.example.tunashopadmin;
+package com.example.tunashopadmin.view.order_detail_screen;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.widget.Toast;
 
-import com.example.tunashopadmin.adapter.CurrentCoffeeOrderAdapter;
+import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityOrderDetailBinding;
-import com.example.tunashopadmin.model.Coffee;
-import com.example.tunashopadmin.model.Order;
-import com.example.tunashopadmin.model.User;
 import com.example.tunashopadmin.viewmodel.OrderDetailViewModel;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class OrderDetailActivity extends AppCompatActivity {
     private ActivityOrderDetailBinding binding;
@@ -33,7 +25,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_order_detail);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_order_detail);
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         String uid = intent.getStringExtra("uid");
@@ -46,12 +38,23 @@ public class OrderDetailActivity extends AppCompatActivity {
             binding.addressCustomer.setText(order.getAddress());
         });
         viewModel.getUserMutableLiveData(uid).observe(this, user -> Picasso.get().load(user.getImgUrl()).into(binding.imgUserOrderDetail));
-        viewModel.getListCoffeeMutableLiveData(id).observe(this, new Observer<List<Coffee>>() {
-            @Override
-            public void onChanged(List<Coffee> coffees) {
-                adapter = new CurrentCoffeeOrderAdapter(coffees);
-                binding.revOrderDetail.setAdapter(adapter);
+        viewModel.getListCoffeeMutableLiveData(id).observe(this, coffees -> {
+            adapter = new CurrentCoffeeOrderAdapter(coffees);
+            binding.revOrderDetail.setAdapter(adapter);
+        });
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Bill");
+        binding.btConfirm.setOnClickListener(v -> {
+            if (!binding.shipper.getText().toString().equals("Chưa chỉ định tài xế")){
+                HashMap<String,Object> map = new HashMap<>();
+                map.put("status","Đang chuẩn bị thức uống");
+                reference.child("customer").child(id)
+                        .updateChildren(map)
+                        .addOnCompleteListener(task -> Toast.makeText(OrderDetailActivity.this,"Đã xác nhận vui lòng đợi shipper tới lấy hàng",Toast.LENGTH_SHORT).show());
+            }
+            else {
+                Toast.makeText(OrderDetailActivity.this,"Vui lòng chọn tài xế giao hàng",Toast.LENGTH_SHORT).show();
             }
         });
+        binding.btBackDetail.setOnClickListener(v -> onBackPressed());
     }
 }

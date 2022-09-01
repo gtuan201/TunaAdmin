@@ -10,27 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TunaShopAdmin">
         <activity
-            android:name=".OrderDetailActivity"
+            android:name=".view.cancel_detail_screen.CancelDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.order_detail_screen.OrderDetailActivity"
             android:configChanges="orientation"
             android:exported="false" />
         <activity
-            android:name=".login_screen.LoginWithEmailActivity"
+            android:name=".view.login_signup_screen.LoginWithEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".login_screen.LoginWithPhoneNumberActivity"
+            android:name=".view.login_signup_screen.LoginWithPhoneNumberActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.main_screen.MainActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:exported="false" />
         <activity
-            android:name=".login_screen.SignUpActivity"
+            android:name=".view.login_signup_screen.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".login_screen.LoginActivity"
+            android:name=".view.login_signup_screen.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".splash_screen.SplashActivity"
+            android:name=".view.splash_screen.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
