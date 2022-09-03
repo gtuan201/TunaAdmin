@@ -34,24 +34,27 @@
                 android:layout_height="70dp"/>
 
         </RadioGroup>
+
         <LinearLayout
             android:id="@+id/text_member"
-            android:orientation="vertical"
-            android:layout_toEndOf="@id/rg_mem_or_all"
-            android:layout_below="@id/question"
-            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="70dp"
+            android:layout_below="@id/question"
+            android:layout_toEndOf="@id/rg_mem_or_all"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Khách hàng là thành viên: "
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
+
             <TextView
-                android:text="Những khách hàng đã đăng ký member sẽ nhận được mã giảm giá này"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="Những khách hàng đã đăng ký member sẽ nhận được mã giảm giá này" />
 
         </LinearLayout>
         <LinearLayout
