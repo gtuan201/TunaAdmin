@@ -1,4 +1,4 @@
-package com.example.tunashopadmin.fragment;
+package com.example.tunashopadmin.view.chat_sceen;
 
 import android.os.Bundle;
 

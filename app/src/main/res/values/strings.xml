@@ -10,4 +10,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="noti_order">Phải lưu ý phân biệt giữa đơn hàng đến lấy và đơn hàng phải giao. Đơn hàng phải giao nên ưu tiên hơn !</string>
     <string name="string_note">Cần chú thích lại những lý do khách hàng nêu ra để khắc phục. Liên hệ với khách nếu lỗi do nhân viên hoặc do shop.</string>
+    <string name="manage_voucher">Quản lý mã giảm giá</string>
+    <string name="voucher_for_member">Voucher cho member</string>
+    <string name="voucher_for_all">Voucher áp dụng cho toàn hệ thống</string>
+    <string name="voucher_type">Chọn loại mã giảm giá</string>
+    <string name="percent">Giảm giá phần trăm</string>
+    <string name="money">Giảm giá khoản tiền cụ thể</string>
+    <string name="contnue">Tiếp theo</string>
+    <string name="want_creat_voucher">Bạn muốn tạo mã giảm giá đối với...</string>
 </resources>

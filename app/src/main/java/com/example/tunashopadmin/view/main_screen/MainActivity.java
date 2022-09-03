@@ -1,7 +1,9 @@
 package com.example.tunashopadmin.view.main_screen;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +16,12 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityMainBinding;
-import com.example.tunashopadmin.fragment.ChatFragment;
+import com.example.tunashopadmin.view.add_voucher_screen.AddVoucherActivity;
+import com.example.tunashopadmin.view.chat_sceen.ChatFragment;
 import com.example.tunashopadmin.view.main_screen.fragment_order_listt.OrderListFragment;
-import com.example.tunashopadmin.fragment.VoucherFragment;
+import com.example.tunashopadmin.view.voucher_screen.VoucherFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,11 +62,19 @@ public class MainActivity extends AppCompatActivity{
             switch (item.getItemId()){
                 case R.id.order_list:
                     fragmentManager.beginTransaction().hide(active).show(orderListFragment).commit();
+                    binding.searchOrderView.setVisibility(View.VISIBLE);
+                    binding.btHelp.setVisibility(View.VISIBLE);
+                    binding.btAddVoucher.setVisibility(View.GONE);
+                    binding.titleVoucher.setVisibility(View.GONE);
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     active = orderListFragment;
                     return true;
                 case R.id.voucher:
                     fragmentManager.beginTransaction().hide(active).show(voucherFragment).commit();
+                    binding.searchOrderView.setVisibility(View.GONE);
+                    binding.btHelp.setVisibility(View.GONE);
+                    binding.btAddVoucher.setVisibility(View.VISIBLE);
+                    binding.titleVoucher.setVisibility(View.VISIBLE);
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     active = voucherFragment;
                     return true;
@@ -74,11 +86,19 @@ public class MainActivity extends AppCompatActivity{
             }
             return false;
         });
+        binding.btAddVoucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddVoucherActivity.class));
+            }
+        });
     }
 
     private void inforUser() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
-        reference.child(FirebaseAuth.getInstance().getUid())
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        reference.child(user.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

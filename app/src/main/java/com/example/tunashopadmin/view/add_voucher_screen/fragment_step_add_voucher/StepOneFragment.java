@@ -1,4 +1,4 @@
-package com.example.tunashopadmin.fragment;
+package com.example.tunashopadmin.view.add_voucher_screen.fragment_step_add_voucher;
 
 import android.os.Bundle;
 
@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.tunashopadmin.R;
 
-public class VoucherFragment extends Fragment {
+public class StepOneFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_voucher, container, false);
+        return inflater.inflate(R.layout.fragment_step_one, container, false);
     }
 }

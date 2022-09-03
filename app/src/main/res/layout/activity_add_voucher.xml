@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout_order_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_back_add_voucher"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/ic_baseline_arrow_back_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Tạo mã giảm giá"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+            android:text="@string/voucher_type"
+            android:padding="10dp"
+            android:background="#5CD8D7D7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:id="@+id/voucher_type_percent"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15sp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/type_1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:padding="5dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/background_voucher_type"
+                android:src="@drawable/ic_baseline_percent_24" />
+            <LinearLayout
+                android:layout_toEndOf="@id/type_1"
+                android:layout_marginStart="15dp"
+                android:orientation="vertical"
+                android:layout_marginEnd="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/percent"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Ưu đãi cho khách hàng bằng cách giảm giá sản phẩm theo phần trăm."
+                    android:textSize="13sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="VD: Giảm 15% cho Trà Sữa Đường Đen"
+                    android:textSize="13sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginEnd="5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </RelativeLayout>
+        <View
+            android:background="@color/grey"
+            android:layout_width="match_parent"
+            android:layout_height="2.5dp"/>
+        <RelativeLayout
+            android:id="@+id/voucher_type_money"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15sp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/type_2"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/background_voucher_type"
+                android:padding="5dp"
+                android:src="@drawable/ic_baseline_attach_money_24" />
+            <LinearLayout
+                android:layout_toEndOf="@id/type_2"
+                android:layout_marginStart="15dp"
+                android:orientation="vertical"
+                android:layout_marginEnd="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/money"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Ưu đãi cho khách hàng bằng cách giảm một khoản tiền cụ thể trên giá sản phẩm."
+                    android:textSize="13sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="VD: Giảm 10.000đ cho Trà Sữa Đường Đen"
+                    android:textSize="13sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginEnd="5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </RelativeLayout>
+        <View
+            android:background="@color/grey"
+            android:layout_width="match_parent"
+            android:layout_height="2.5dp"/>
+
+    </LinearLayout>
+
+</layout>
