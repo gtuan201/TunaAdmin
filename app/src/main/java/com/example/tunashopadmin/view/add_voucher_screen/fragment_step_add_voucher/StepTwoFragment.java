@@ -1,5 +1,6 @@
 package com.example.tunashopadmin.view.add_voucher_screen.fragment_step_add_voucher;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.FragmentStepTwoBinding;
@@ -22,6 +24,7 @@ import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 public class StepTwoFragment extends Fragment {
 
     private FragmentStepTwoBinding binding;
+    @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class StepTwoFragment extends Fragment {
         binding.etPercent.setOnFocusChangeListener((v, hasFocus) -> binding.etPercent.setBackgroundResource(R.drawable.edit_text_custom3));
         binding.etMaxOfPercent.setOnFocusChangeListener((v, hasFocus) -> binding.etMaxOfPercent.setBackgroundResource(R.drawable.edit_text_custom3));
         StepVoucherActivity activity = (StepVoucherActivity) getActivity();
+        StepAddVoucherViewModel viewModel = new ViewModelProvider(requireActivity()).get(StepAddVoucherViewModel.class);
         assert activity != null;
         String type = activity.getType();
         if (type.equals("percent")){
@@ -45,7 +49,22 @@ public class StepTwoFragment extends Fragment {
             binding.layoutMax.setVisibility(View.GONE);
             binding.layoutMoney.setVisibility(View.VISIBLE);
         }
-        StepAddVoucherViewModel viewModel = new ViewModelProvider(requireActivity()).get(StepAddVoucherViewModel.class);
+        binding.rgPercent.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId){
+                case R.id.rb_5percent:
+                    binding.etPercent.setText("5");
+                    break;
+                case R.id.rb_10percent:
+                    binding.etPercent.setText("10");
+                    break;
+                case R.id.rb_15percent:
+                    binding.etPercent.setText("15");
+                    break;
+                case R.id.rb_20percent:
+                    binding.etPercent.setText("20");
+                    break;
+            }
+        });
         binding.btContinue.setOnClickListener(v -> {
             if (type.equals("percent")){
                 String percent = binding.etPercent.getText().toString().trim();
@@ -64,6 +83,7 @@ public class StepTwoFragment extends Fragment {
                         voucher.setMinTotalPrice(min);
                         voucher.setType(type);
                         activity.nextStep(1);
+                        activity.setTextStep("Tạo mã giảm giá - Bước 3");
                     });
                 }
             }
@@ -82,6 +102,7 @@ public class StepTwoFragment extends Fragment {
                         voucher.setMinTotalPrice(min);
                         voucher.setType(type);
                         activity.nextStep(1);
+                        activity.setTextStep("Tạo mã giảm giá - Bước 3");
                     });
                 }
             }

@@ -29,7 +29,7 @@ public class StepThreeFragment extends Fragment {
         viewModel.getVoucherMutableLiveData().observe(requireActivity(), new Observer<Voucher>() {
             @Override
             public void onChanged(Voucher voucher) {
-                binding.tvTest.setText(String.format("%s %s %s", voucher.getSubject(), voucher.getPercent(), voucher.getMaxOfPercent()));
+
             }
         });
         return view;

@@ -49,6 +49,7 @@ public class StepOneFragment extends Fragment {
         binding.btContinue.setOnClickListener(v -> {
             assert activity != null;
             activity.nextStep(0);
+            activity.setTextStep("Tạo mã giảm giá - Bước 2");
             voucher.setSubject(subject);
             viewModel.setData(voucher);
         });

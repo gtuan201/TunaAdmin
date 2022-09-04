@@ -49,6 +49,9 @@ public class StepVoucherActivity extends AppCompatActivity {
                 break;
         }
     }
+    public void setTextStep(String step){
+        binding.tvStep.setText(step);
+    }
 
     public String getType() {
         return type;
