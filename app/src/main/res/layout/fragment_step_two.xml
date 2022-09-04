@@ -1,14 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.add_voucher_screen.fragment_step_add_voucher.StepTwoFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hai" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/layout_button"
+            android:orientation="vertical">
+            <TextView
+                android:text="Giá trị của mã giảm giá ?"
+                android:padding="10dp"
+                android:background="@color/grey"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/layout_money"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nhập giá trị của mã" />
+                <TextView
+                    android:id="@+id/tv_warning1"
+                    android:text="* Bạn chưa nhập giá trị của mã"
+                    android:visibility="gone"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/warning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-</FrameLayout>
+                <EditText
+                    android:id="@+id/et_amount"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/edit_text_custom2"
+                    android:hint="0đ"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp" />
+                <TextView
+                    android:text="Ví dụ : 10000đ"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_percent"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/input_percent" />
+                <TextView
+                    android:id="@+id/tv_warning2"
+                    android:text="* Bạn chưa nhập giá trị của mã giảm giá"
+                    android:visibility="gone"
+                    android:textColor="@color/warning"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/et_percent"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/edit_text_custom2"
+                    android:hint="0%"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gợi ý giảm giá tối đa 50%" />
+
+                <TextView
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hoặc chọn giá trị chiết khấu sau: " />
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/rb_5percent"
+                        android:text="5%"
+                        android:background="@drawable/radio_button_background"
+                        android:textColor="@drawable/text_checked"
+                        android:paddingVertical="7dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:button="@drawable/null_button"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"/>
+                    <RadioButton
+                        android:id="@+id/rb_10percent"
+                        android:text="10%"
+                        android:background="@drawable/radio_button_background"
+                        android:paddingVertical="7dp"
+                        android:textColor="@drawable/text_checked"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center"
+                        android:button="@drawable/null_button"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/rb_15percent"
+                        android:text="15%"
+                        android:background="@drawable/radio_button_background"
+                        android:paddingVertical="7dp"
+                        android:textColor="@drawable/text_checked"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center"
+                        android:button="@drawable/null_button"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/rb_20percent"
+                        android:text="20%"
+                        android:background="@drawable/radio_button_background"
+                        android:paddingVertical="7dp"
+                        android:textColor="@drawable/text_checked"
+                        android:gravity="center"
+                        android:button="@drawable/null_button"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:text="Trị giá đơn hàng tối thiểu"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:layout_width="match_parent"
+                android:background="@color/grey"
+                android:layout_height="40dp"/>
+            <EditText
+                android:id="@+id/et_min_total_price"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:layout_height="40dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/edit_text_custom2"
+                android:hint="Nhập giá trị tối thiểu của đơn hàng"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp" />
+            <LinearLayout
+                android:id="@+id/layout_max"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Số tiền khuyến mãi tối đa"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:layout_width="match_parent"
+                    android:background="@color/grey"
+                    android:layout_height="40dp"/>
+                <TextView
+                    android:layout_marginHorizontal="10dp"
+                    android:text="Bạn có muốn giới hạn số tiền tối đa cho khuyến mãi này không?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/et_max_of_percent"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/edit_text_custom2"
+                    android:hint="0đ"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_button"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/grey"
+                android:layout_height="1dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_continue"
+                android:text="@string/contnue"
+                android:textSize="15.5sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_custom4"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</layout>

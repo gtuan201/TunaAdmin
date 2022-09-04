@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,14 @@ import android.widget.RadioGroup;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.FragmentStepOneBinding;
+import com.example.tunashopadmin.model.Voucher;
+import com.example.tunashopadmin.view.add_voucher_screen.StepVoucherActivity;
+import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 
 public class StepOneFragment extends Fragment {
     private FragmentStepOneBinding binding;
     String subject;
+    private final Voucher voucher = new Voucher();
     @SuppressLint("NonConstantResourceId")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -28,6 +33,8 @@ public class StepOneFragment extends Fragment {
         binding.textAll.setOnClickListener(v -> binding.rgMemOrAll.check(R.id.all));
         binding.textMember.setOnClickListener(v -> binding.rgMemOrAll.check(R.id.member));
         binding.rgMemOrAll.check(R.id.all);
+        StepVoucherActivity activity = (StepVoucherActivity) getActivity();
+        StepAddVoucherViewModel viewModel = new ViewModelProvider(requireActivity()).get(StepAddVoucherViewModel.class);
         subject = "all";
         binding.rgMemOrAll.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId){
@@ -38,6 +45,12 @@ public class StepOneFragment extends Fragment {
                     subject = "member";
                     break;
             }
+        });
+        binding.btContinue.setOnClickListener(v -> {
+            assert activity != null;
+            activity.nextStep(0);
+            voucher.setSubject(subject);
+            viewModel.setData(voucher);
         });
         return view;
     }

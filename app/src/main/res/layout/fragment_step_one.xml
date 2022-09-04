@@ -24,22 +24,42 @@
             android:gravity="center_horizontal"
             android:layout_height="wrap_content">
             <RadioButton
-                android:id="@+id/member"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"/>
-
-            <RadioButton
                 android:id="@+id/all"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"/>
 
+            <RadioButton
+                android:id="@+id/member"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"/>
+
         </RadioGroup>
+        <LinearLayout
+            android:id="@+id/text_all"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/rg_mem_or_all"
+            android:layout_below="@id/question"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+            <TextView
+                android:text="Toàn bộ cứa hàng: "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="Toàn bộ người dùng sẽ thấy mã giảm giá này"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/text_member"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_below="@id/question"
+            android:layout_below="@id/text_all"
             android:layout_toEndOf="@id/rg_mem_or_all"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -58,22 +78,23 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/text_all"
+            android:id="@+id/layout_button"
             android:orientation="vertical"
-            android:layout_toEndOf="@id/rg_mem_or_all"
-            android:layout_below="@id/text_member"
-            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="70dp">
-            <TextView
-                android:text="Toàn bộ cứa hàng: "
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:text="Toàn bộ người dùng sẽ thấy mã giảm giá này"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/grey"
+                android:layout_height="1dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_continue"
+                android:text="@string/contnue"
+                android:textSize="15.5sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_custom4"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>

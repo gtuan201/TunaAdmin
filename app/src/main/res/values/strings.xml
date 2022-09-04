@@ -18,4 +18,5 @@
     <string name="money">Giảm giá khoản tiền cụ thể</string>
     <string name="contnue">Tiếp theo</string>
     <string name="want_creat_voucher">Bạn muốn tạo mã giảm giá đối với...</string>
+    <string name="input_percent">Nhập giá trị chiết khấu</string>
 </resources>
