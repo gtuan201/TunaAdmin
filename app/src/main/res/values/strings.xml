@@ -39,4 +39,12 @@
     <string name="value_voucher">Giá trị của mã giảm giá ?</string>
     <string name="time_apply">Thời gian khuyễn mãi được áp dụng ?</string>
     <string name="preview_voucher">Xem trước mã giảm giá</string>
+    <string name="time_date_apply">Thời gian chạy khuyến mãi</string>
+    <string name="time_start">Thời gian bắt đầu</string>
+    <string name="select_time_start">Chọn ngày và thời gian</string>
+    <string name="time_cancel">Thời gian kết thúc</string>
+    <string name="name_voucher">Tên mã giảm giá</string>
+    <string name="vidu">Ví dụ: #TUNA503</string>
+    <string name="input_name_voucher">Nhập tên của mã giảm giá...</string>
+    <string name="complete">Hoàn tất</string>
 </resources>

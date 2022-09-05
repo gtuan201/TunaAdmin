@@ -30,10 +30,12 @@
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_login_with_phone_number.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_order_detail.xml" value="0.264" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_preview_voucher.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_step1_voucher.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_step_voucher.xml" value="0.25416666666666665" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/date_and_time_picker.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/fragment_cancel_order.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/fragment_chat.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/fragment_current_order.xml" value="0.25416666666666665" />

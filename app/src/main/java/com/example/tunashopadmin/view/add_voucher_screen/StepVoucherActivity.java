@@ -33,18 +33,18 @@ public class StepVoucherActivity extends AppCompatActivity {
                 .animationDuration(getResources().getInteger(android.R.integer.config_longAnimTime))
                 .commit();
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.step_container, stepOneFragment, "1").commit();
+        manager.beginTransaction().replace(R.id.step_container, stepOneFragment, "0").commit();
     }
 
     public void nextStep(int stepIndex) {
         FragmentManager manager = getSupportFragmentManager();
         switch (stepIndex) {
             case 0:
-                manager.beginTransaction().replace(R.id.step_container, stepTwoFragment).commit();
+                manager.beginTransaction().replace(R.id.step_container, stepTwoFragment,"1").commit();
                 binding.stepView.go(1, true);
                 break;
             case 1:
-                manager.beginTransaction().replace(R.id.step_container, stepThreeFragment).commit();
+                manager.beginTransaction().replace(R.id.step_container, stepThreeFragment,"2").commit();
                 binding.stepView.go(2, true);
                 break;
         }

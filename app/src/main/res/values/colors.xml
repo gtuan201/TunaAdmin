@@ -13,4 +13,5 @@
     <color name="stepview2">#D2FF6633</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="warning">#FF5D5D</color>
+    <color name="dark_grey">#818181</color>
 </resources>

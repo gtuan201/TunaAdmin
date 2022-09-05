@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <TextView
+            android:text="Chọn thời gian áp dụng"
+            android:background="#FDC9B9"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+        <TextView
+            android:text="Chọn thời gian"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TimePicker
+            android:id="@+id/time_picker"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/grey"
+            android:timePickerMode="spinner"
+            android:layout_width="300dp"
+            android:layout_height="180dp"/>
+        <TextView
+            android:text="Chọn ngày"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:background="@color/grey"
+            android:calendarViewShown="true"
+            android:layout_gravity="center_horizontal"
+            android:scaleY="0.9"
+            android:datePickerMode="calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_ok"
+            android:textSize="15.5sp"
+            android:text="Xong"
+            android:background="@drawable/button_custom4"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</layout>
