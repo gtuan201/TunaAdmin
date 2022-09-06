@@ -5,7 +5,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityPreviewVoucherBinding;
@@ -13,17 +15,49 @@ import com.example.tunashopadmin.model.Voucher;
 import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 
 public class PreviewVoucherActivity extends AppCompatActivity {
-    private ActivityPreviewVoucherBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_preview_voucher);
-        StepAddVoucherViewModel viewModel = new ViewModelProvider(this).get(StepAddVoucherViewModel.class);
-        viewModel.getVoucherMutableLiveData().observe(this, new Observer<Voucher>() {
-            @Override
-            public void onChanged(Voucher voucher) {
-                binding.tvTest.setText(voucher.getNameVoucher());
-            }
-        });
+        ActivityPreviewVoucherBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_preview_voucher);
+        Intent intent = getIntent();
+        String type = intent.getStringExtra("type");
+        String name = intent.getStringExtra("nameVoucher");
+        String subject = intent.getStringExtra("object");
+        String percent = intent.getStringExtra("percent");
+        String amount = intent.getStringExtra("amount");
+        String min = intent.getStringExtra("minTotalPrice");
+        String max = intent.getStringExtra("maxPrice");
+        String timeStart = intent.getStringExtra("timeStart");
+        String timeCancel = intent.getStringExtra("timeCancel");
+        binding.nameVoucher.setText(name);
+        binding.tvMinTotalPrice.setText(String.format("%sđ", min));
+        binding.tvTimeStart.setText(timeStart);
+        binding.tvTimeCancel.setText(timeCancel);
+        if (type.equals("percent")){
+            binding.typeVoucher.setText("Giảm giá theo phần trăm trên giá trị của đơn hàng");
+        }
+        else {
+            binding.typeVoucher.setText("Giảm giá theo số tiền cụ thể");
+        }
+        if (subject.equals("all")){
+            binding.tvObject.setText("Toàn bộ bộ cửa hàng");
+            binding.tvObjectDetail.setText("Toàn bộ khách hàng sẽ sử dụng được mã giảm giá này");
+        }
+        else {
+            binding.tvObject.setText("Khách hàng là member");
+            binding.tvObjectDetail.setText("Chỉ những khách hàng là member mới thấy và sử dụng mà giảm giá này");
+        }
+        if (type.equals("money")){
+            binding.tvMaxVoucher.setVisibility(View.GONE);
+            binding.titleMax.setVisibility(View.GONE);
+            binding.tvPriceVoucher.setText(String.format("%sđ", amount));
+        }
+        else {
+            binding.tvMaxVoucher.setVisibility(View.VISIBLE);
+            binding.titleMax.setVisibility(View.VISIBLE);
+            binding.tvMaxVoucher.setText(String.format("%sđ", max));
+            binding.tvPriceVoucher.setText(String.format("%s %%", percent));
+        }
+        binding.btBackPreviewVoucher.setOnClickListener(v -> onBackPressed());
     }
 }

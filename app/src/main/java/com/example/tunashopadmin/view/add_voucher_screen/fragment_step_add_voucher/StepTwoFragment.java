@@ -74,6 +74,10 @@ public class StepTwoFragment extends Fragment {
                     binding.tvWarning2.setVisibility(View.VISIBLE);
                     binding.etPercent.setBackgroundResource(R.drawable.edit_text_custom4);
                 }
+                else if (TextUtils.isEmpty(min)){
+                    binding.tvWarning3.setVisibility(View.VISIBLE);
+                    binding.etMinTotalPrice.setBackgroundResource(R.drawable.edit_text_custom4);
+                }
                 else {
                     binding.tvWarning2.setVisibility(View.GONE);
                     binding.etPercent.setBackgroundResource(R.drawable.edit_text_custom3);
@@ -93,6 +97,10 @@ public class StepTwoFragment extends Fragment {
                 if (TextUtils.isEmpty(amount)){
                     binding.tvWarning1.setVisibility(View.VISIBLE);
                     binding.etAmount.setBackgroundResource(R.drawable.edit_text_custom4);
+                }
+                else if (TextUtils.isEmpty(min)){
+                    binding.tvWarning3.setVisibility(View.VISIBLE);
+                    binding.etMinTotalPrice.setBackgroundResource(R.drawable.edit_text_custom4);
                 }
                 else {
                     binding.tvWarning1.setVisibility(View.GONE);

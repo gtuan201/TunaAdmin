@@ -17,7 +17,7 @@
     <string name="percent">Giảm giá phần trăm</string>
     <string name="money">Giảm giá khoản tiền cụ thể</string>
     <string name="contnue">Tiếp theo</string>
-    <string name="want_creat_voucher">Bạn muốn tạo mã giảm giá đối với...</string>
+    <string name="want_creat_voucher">Bạn muốn tạo mã giảm giá đối với…</string>
     <string name="input_percent">Nhập giá trị chiết khấu</string>
     <string name="ovnđ">0đ</string>
     <string name="question_max_of_percent">Bạn có muốn giới hạn số tiền tối đa cho khuyến mãi này không?</string>
@@ -45,6 +45,8 @@
     <string name="time_cancel">Thời gian kết thúc</string>
     <string name="name_voucher">Tên mã giảm giá</string>
     <string name="vidu">Ví dụ: #TUNA503</string>
-    <string name="input_name_voucher">Nhập tên của mã giảm giá...</string>
+    <string name="input_name_voucher">Nhập tên của mã giảm giá…</string>
     <string name="complete">Hoàn tất</string>
+    <string name="type_voucher">Loại mã giảm giá</string>
+    <string name="object">Đối tượng sử dụng được voucher</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.tunashopadmin.view.add_voucher_screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
@@ -19,6 +20,7 @@ public class StepVoucherActivity extends AppCompatActivity {
     private final StepOneFragment stepOneFragment = new StepOneFragment();
     private final StepTwoFragment stepTwoFragment = new StepTwoFragment();
     private final StepThreeFragment stepThreeFragment = new StepThreeFragment();
+    private final FragmentManager manager = getSupportFragmentManager();
     String type;
 
     @Override
@@ -32,7 +34,6 @@ public class StepVoucherActivity extends AppCompatActivity {
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_longAnimTime))
                 .commit();
-        FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.step_container, stepOneFragment, "0").commit();
     }
 
@@ -40,15 +41,25 @@ public class StepVoucherActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         switch (stepIndex) {
             case 0:
-                manager.beginTransaction().replace(R.id.step_container, stepTwoFragment,"1").commit();
+                manager.beginTransaction().replace(R.id.step_container, stepTwoFragment,"1").addToBackStack("1").commit();
                 binding.stepView.go(1, true);
                 break;
             case 1:
-                manager.beginTransaction().replace(R.id.step_container, stepThreeFragment,"2").commit();
+                manager.beginTransaction().replace(R.id.step_container, stepThreeFragment,"2").addToBackStack("2").commit();
                 binding.stepView.go(2, true);
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if(manager.getBackStackEntryCount() > 0){
+            manager.popBackStack();
+        } else{
+            finish();
+        }
+    }
+
     public void setTextStep(String step){
         binding.tvStep.setText(step);
     }

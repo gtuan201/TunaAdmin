@@ -5,13 +5,252 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:orientation="vertical"
             android:layout_above="@id/layout_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_layout_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_back_preview_voucher"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/ic_baseline_arrow_back_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Xem trước mã giảm giá"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            </com.google.android.material.appbar.AppBarLayout>
             <TextView
-                android:id="@+id/tv_test"
+                android:text="@string/type_voucher"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:gravity="center_vertical"
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+            <TextView
+                android:text="Tên mã giảm giá"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/name_voucher"
+                android:layout_marginBottom="8dp"
+                android:text="@string/type_voucher"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="Loại mã giảm giá"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/type_voucher"
+                android:layout_marginBottom="8dp"
+                android:text="@string/type_voucher"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@string/object"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:gravity="center_vertical"
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+            <TextView
+                android:id="@+id/tv_object"
+                android:layout_marginTop="8dp"
+                android:text="Toàn bộ cửa hàng"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_object_detail"
+                android:layout_marginBottom="8dp"
+                android:text="Toàn bộ cửa hàng"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="Giá trị của mã giảm giá"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:gravity="center_vertical"
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+            <TextView
+                android:text="Giá trị của mã giảm giá"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_price_voucher"
+                android:text="Mức giảm"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="Bắt buộc phải đặt đơn hàng tối thiểu"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_min_total_price"
+                android:text="tối thiểu"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/title_max"
+                android:text="Giảm tối đa đối với phần trăm tổng giá trị đơn hàng"
+                android:layout_marginTop="8dp"
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_max_voucher"
+                android:text="tối đa"
+                android:visibility="visible"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="Điều kiện của mã giảm giá"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:gravity="center_vertical"
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+            <TextView
+                android:text="Ngày và thời gian bắt đầu khuyễn mãi"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_time_start"
+                android:text="Bắt đầu"
+                android:visibility="visible"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:text="Ngày và thời gian kết thúc khuyễn mãi"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_time_cancel"
+                android:text="Kết thúc"
+                android:visibility="visible"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Bằng cách nhấn vào nút bên dưới, bạn đã đọc hiểu và đồng "
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="ý với "
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#34A5FF"
+                        android:text="Điều khoản sử dụng "
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:text="của Tuna Coffee Shop "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
         <LinearLayout

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.text.TextUtils;
@@ -21,22 +20,16 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.tunashopadmin.R;
-import com.example.tunashopadmin.databinding.DateAndTimePickerBinding;
 import com.example.tunashopadmin.databinding.FragmentStepThreeBinding;
-import com.example.tunashopadmin.model.Voucher;
 import com.example.tunashopadmin.view.preview_voucher_screen.PreviewVoucherActivity;
 import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Objects;
 
 public class StepThreeFragment extends Fragment {
     private FragmentStepThreeBinding binding;
@@ -58,6 +51,17 @@ public class StepThreeFragment extends Fragment {
                     voucher.setTimeStart(timeStart);
                     voucher.setTimeCancel(timeCancel);
                     voucher.setNameVoucher(nameVoucher);
+                    Intent intent = new Intent(getActivity(), PreviewVoucherActivity.class);
+                    intent.putExtra("nameVoucher",voucher.getNameVoucher());
+                    intent.putExtra("type",voucher.getType());
+                    intent.putExtra("object",voucher.getSubject());
+                    intent.putExtra("percent",voucher.getPercent());
+                    intent.putExtra("amount",voucher.getAmount());
+                    intent.putExtra("minTotalPrice",voucher.getMinTotalPrice());
+                    intent.putExtra("maxPrice",voucher.getMaxOfPercent());
+                    intent.putExtra("timeStart",voucher.getTimeStart());
+                    intent.putExtra("timeCancel",voucher.getTimeCancel());
+                    requireContext().startActivity(intent);
                 });
             }
             else {
