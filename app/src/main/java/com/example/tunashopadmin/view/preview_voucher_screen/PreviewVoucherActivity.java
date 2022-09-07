@@ -2,27 +2,21 @@ package com.example.tunashopadmin.view.preview_voucher_screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityPreviewVoucherBinding;
-import com.example.tunashopadmin.model.Voucher;
 import com.example.tunashopadmin.view.add_voucher_screen.AddVoucherActivity;
 import com.example.tunashopadmin.view.add_voucher_screen.StepVoucherActivity;
 import com.example.tunashopadmin.viewmodel.AddVoucherViewModel;
-import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 
 public class PreviewVoucherActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
