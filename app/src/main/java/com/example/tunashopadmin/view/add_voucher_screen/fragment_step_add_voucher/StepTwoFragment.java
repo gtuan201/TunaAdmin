@@ -88,7 +88,9 @@ public class StepTwoFragment extends Fragment {
                         voucher.setMinTotalPrice(min);
                         voucher.setType(type);
                         activity.nextStep();
-                        activity.setTextStep("Tạo mã giảm giá - Bước 3");
+                        if (isVisible()){
+                            activity.setTextStep("Tạo mã giảm giá - Bước 3");
+                        }
                     });
                 }
             }

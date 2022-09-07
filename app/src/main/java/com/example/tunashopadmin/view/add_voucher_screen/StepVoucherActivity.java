@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -33,22 +34,23 @@ public class StepVoucherActivity extends AppCompatActivity {
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_longAnimTime))
                 .commit();
-        manager.beginTransaction().add(R.id.step_container, stepOneFragment).show(stepOneFragment).addToBackStack(null).commit();
-        manager.beginTransaction().add(R.id.step_container, stepTwoFragment).hide(stepTwoFragment).addToBackStack(null).commit();
-        manager.beginTransaction().add(R.id.step_container, stepThreeFragment).hide(stepThreeFragment).addToBackStack(null).commit();
+        manager.beginTransaction().add(R.id.step_container, stepOneFragment).commit();
+        manager.beginTransaction().add(R.id.step_container, stepTwoFragment).hide(stepTwoFragment).commit();
+        manager.beginTransaction().add(R.id.step_container, stepThreeFragment).hide(stepThreeFragment).commit();
     }
 
     public void nextStep() {
         FragmentManager manager = getSupportFragmentManager();
         if (stepOneFragment.isVisible()){
-            manager.beginTransaction().show(stepTwoFragment).hide(stepOneFragment).commit();
+            manager.beginTransaction().hide(stepOneFragment).show(stepTwoFragment).commit();
             binding.stepView.go(1, true);
         }
         if (stepTwoFragment.isVisible()){
-            manager.beginTransaction().show(stepThreeFragment).hide(stepTwoFragment).commit();
+            manager.beginTransaction().hide(stepTwoFragment).show(stepThreeFragment).commit();
             binding.stepView.go(2, true);
         }
     }
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBackPressed() {
         if(stepThreeFragment.isVisible()){

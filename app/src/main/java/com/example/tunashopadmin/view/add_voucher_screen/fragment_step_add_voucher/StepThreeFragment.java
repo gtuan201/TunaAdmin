@@ -61,7 +61,9 @@ public class StepThreeFragment extends Fragment {
                     intent.putExtra("maxPrice",voucher.getMaxOfPercent());
                     intent.putExtra("timeStart",voucher.getTimeStart());
                     intent.putExtra("timeCancel",voucher.getTimeCancel());
-                    requireActivity().startActivity(intent);
+                    if (isVisible()){
+                        requireActivity().startActivity(intent);
+                    }
                 });
             }
             else {
