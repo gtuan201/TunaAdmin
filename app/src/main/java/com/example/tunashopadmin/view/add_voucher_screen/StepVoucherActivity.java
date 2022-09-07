@@ -33,7 +33,7 @@ public class StepVoucherActivity extends AppCompatActivity {
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_longAnimTime))
                 .commit();
-        manager.beginTransaction().add(R.id.step_container, stepOneFragment).addToBackStack(null).commit();
+        manager.beginTransaction().add(R.id.step_container, stepOneFragment).show(stepOneFragment).addToBackStack(null).commit();
         manager.beginTransaction().add(R.id.step_container, stepTwoFragment).hide(stepTwoFragment).addToBackStack(null).commit();
         manager.beginTransaction().add(R.id.step_container, stepThreeFragment).hide(stepThreeFragment).addToBackStack(null).commit();
     }
@@ -41,6 +41,7 @@ public class StepVoucherActivity extends AppCompatActivity {
     public void nextStep() {
         FragmentManager manager = getSupportFragmentManager();
         if (stepOneFragment.isVisible()){
+            manager.beginTransaction().show(stepTwoFragment).hide(stepOneFragment).commit();
             binding.stepView.go(1, true);
         }
         if (stepTwoFragment.isVisible()){
@@ -52,10 +53,12 @@ public class StepVoucherActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(stepThreeFragment.isVisible()){
             manager.beginTransaction().show(stepTwoFragment).hide(stepThreeFragment).commit();
+            binding.tvStep.setText("Tạo mã giảm giá - Bước 2");
             binding.stepView.go(1, true);
         }
         else if (stepTwoFragment.isVisible()){
             manager.beginTransaction().show(stepOneFragment).hide(stepTwoFragment).commit();
+            binding.tvStep.setText("Tạo mã giảm giá - Bước 1");
             binding.stepView.go(0, true);
         }
         else if (stepOneFragment.isVisible()){

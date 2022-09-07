@@ -51,7 +51,7 @@ public class StepThreeFragment extends Fragment {
                     voucher.setTimeStart(timeStart);
                     voucher.setTimeCancel(timeCancel);
                     voucher.setNameVoucher(nameVoucher);
-                    Intent intent = new Intent(getContext(), PreviewVoucherActivity.class);
+                    Intent intent = new Intent(requireActivity(), PreviewVoucherActivity.class);
                     intent.putExtra("nameVoucher",voucher.getNameVoucher());
                     intent.putExtra("type",voucher.getType());
                     intent.putExtra("object",voucher.getSubject());
@@ -61,7 +61,7 @@ public class StepThreeFragment extends Fragment {
                     intent.putExtra("maxPrice",voucher.getMaxOfPercent());
                     intent.putExtra("timeStart",voucher.getTimeStart());
                     intent.putExtra("timeCancel",voucher.getTimeCancel());
-//                    getContext().startActivity(intent);
+                    requireActivity().startActivity(intent);
                 });
             }
             else {

@@ -89,7 +89,6 @@ public class StepTwoFragment extends Fragment {
                         voucher.setType(type);
                         activity.nextStep();
                         activity.setTextStep("Tạo mã giảm giá - Bước 3");
-                        Toast.makeText(getContext(),"Test",Toast.LENGTH_SHORT).show();
                     });
                 }
             }
@@ -113,7 +112,6 @@ public class StepTwoFragment extends Fragment {
                         voucher.setType(type);
                         activity.nextStep();
                         activity.setTextStep("Tạo mã giảm giá - Bước 3");
-                        Toast.makeText(getContext(),"Test",Toast.LENGTH_SHORT).show();
                     });
                 }
             }
