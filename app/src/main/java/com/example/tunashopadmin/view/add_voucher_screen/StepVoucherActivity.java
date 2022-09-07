@@ -41,7 +41,6 @@ public class StepVoucherActivity extends AppCompatActivity {
     public void nextStep() {
         FragmentManager manager = getSupportFragmentManager();
         if (stepOneFragment.isVisible()){
-            manager.beginTransaction().show(stepTwoFragment).hide(stepOneFragment).commit();
             binding.stepView.go(1, true);
         }
         if (stepTwoFragment.isVisible()){
