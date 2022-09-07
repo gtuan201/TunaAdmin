@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityAddVoucherBinding;
+import com.example.tunashopadmin.view.main_screen.MainActivity;
 
 public class AddVoucherActivity extends AppCompatActivity {
 
@@ -21,11 +22,13 @@ public class AddVoucherActivity extends AppCompatActivity {
             Intent intent = new Intent(AddVoucherActivity.this, StepVoucherActivity.class);
             intent.putExtra("type","money");
             startActivity(intent);
+            finish();
         });
         binding.voucherTypePercent.setOnClickListener(v -> {
             Intent intent = new Intent(AddVoucherActivity.this, StepVoucherActivity.class);
             intent.putExtra("type","percent");
             startActivity(intent);
+            finish();
         });
     }
 }

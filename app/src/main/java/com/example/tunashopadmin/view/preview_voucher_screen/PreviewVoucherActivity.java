@@ -5,18 +5,24 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityPreviewVoucherBinding;
 import com.example.tunashopadmin.model.Voucher;
+import com.example.tunashopadmin.view.add_voucher_screen.AddVoucherActivity;
 import com.example.tunashopadmin.view.add_voucher_screen.StepVoucherActivity;
 import com.example.tunashopadmin.viewmodel.AddVoucherViewModel;
 import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 
 public class PreviewVoucherActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +38,6 @@ public class PreviewVoucherActivity extends AppCompatActivity {
         String timeStart = intent.getStringExtra("timeStart");
         String timeCancel = intent.getStringExtra("timeCancel");
         AddVoucherViewModel viewModel = new ViewModelProvider(this).get(AddVoucherViewModel.class);
-        StepVoucherActivity activity = new StepVoucherActivity();
         binding.nameVoucher.setText(name);
         binding.tvMinTotalPrice.setText(String.format("%sđ", min));
         binding.tvTimeStart.setText(timeStart);
@@ -66,7 +71,12 @@ public class PreviewVoucherActivity extends AppCompatActivity {
         binding.btComplete.setOnClickListener(v -> {
             long timestamp = System.currentTimeMillis();
             viewModel.AddVoucher(timestamp,name,subject,timeStart,timeCancel,amount,percent,min,max,type);
-            finish();
+            new Handler().postDelayed(() -> {
+                Intent intent1 = new Intent(PreviewVoucherActivity.this, AddVoucherActivity.class);
+                startActivity(intent1);
+                finish();
+                StepVoucherActivity.fa.finish();
+            },1000);
         });
     }
 

@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,11 +22,14 @@ public class StepVoucherActivity extends AppCompatActivity {
     private final StepTwoFragment stepTwoFragment = new StepTwoFragment();
     private final StepThreeFragment stepThreeFragment = new StepThreeFragment();
     private final FragmentManager manager = getSupportFragmentManager();
+    @SuppressLint("StaticFieldLeak")
+    public static Activity fa;
     String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fa = this;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_step_voucher);
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
@@ -67,11 +71,9 @@ public class StepVoucherActivity extends AppCompatActivity {
             finish();
         }
     }
-
     public void setTextStep(String step){
         binding.tvStep.setText(step);
     }
-
     public String getType() {
         return type;
     }

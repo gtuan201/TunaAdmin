@@ -34,11 +34,6 @@ public class AddVoucherRepository {
         reference.child(""+id).setValue(hashMap)
                 .addOnSuccessListener(unused -> {
                     Toast.makeText(application,"Đã thêm voucher thành công",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(() -> {
-                        Intent intent = new Intent(application, AddVoucherActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        application.startActivity(intent);
-                    },1200);
                 })
                 .addOnFailureListener(e -> Toast.makeText(application,"Lỗi! Vui lòng thử lại",Toast.LENGTH_SHORT).show());
     }
