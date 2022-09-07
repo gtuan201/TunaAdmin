@@ -34,28 +34,32 @@ public class StepVoucherActivity extends AppCompatActivity {
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_longAnimTime))
                 .commit();
-        manager.beginTransaction().replace(R.id.step_container, stepOneFragment, "0").commit();
+        manager.beginTransaction().replace(R.id.step_container, stepOneFragment).addToBackStack(null).commit();
     }
 
-    public void nextStep(int stepIndex) {
+    public void nextStep() {
         FragmentManager manager = getSupportFragmentManager();
-        switch (stepIndex) {
-            case 0:
-                manager.beginTransaction().replace(R.id.step_container, stepTwoFragment,"1").addToBackStack("1").commit();
-                binding.stepView.go(1, true);
-                break;
-            case 1:
-                manager.beginTransaction().replace(R.id.step_container, stepThreeFragment,"2").addToBackStack("2").commit();
-                binding.stepView.go(2, true);
-                break;
+        if (stepOneFragment.isVisible()){
+            manager.beginTransaction().replace(R.id.step_container, stepTwoFragment).addToBackStack(null).commit();
+            binding.stepView.go(1, true);
+        }
+        else if (stepTwoFragment.isVisible()){
+            manager.beginTransaction().replace(R.id.step_container, stepThreeFragment).addToBackStack(null).commit();
+            binding.stepView.go(2, true);
         }
     }
 
     @Override
     public void onBackPressed() {
-        if(manager.getBackStackEntryCount() > 0){
-            manager.popBackStack();
-        } else{
+        if(stepThreeFragment.isVisible()){
+            manager.beginTransaction().replace(R.id.step_container, stepTwoFragment).addToBackStack(null).commit();
+            binding.stepView.go(1, true);
+        }
+        else if (stepTwoFragment.isVisible()){
+            manager.beginTransaction().replace(R.id.step_container, stepOneFragment).addToBackStack(null).commit();
+            binding.stepView.go(0, true);
+        }
+        else if (stepOneFragment.isVisible()){
             finish();
         }
     }

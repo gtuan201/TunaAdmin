@@ -86,7 +86,7 @@ public class StepTwoFragment extends Fragment {
                         voucher.setMaxOfPercent(max);
                         voucher.setMinTotalPrice(min);
                         voucher.setType(type);
-                        activity.nextStep(1);
+                        activity.nextStep();
                         activity.setTextStep("Tạo mã giảm giá - Bước 3");
                     });
                 }
@@ -109,7 +109,7 @@ public class StepTwoFragment extends Fragment {
                         voucher.setAmount(amount);
                         voucher.setMinTotalPrice(min);
                         voucher.setType(type);
-                        activity.nextStep(1);
+                        activity.nextStep();
                         activity.setTextStep("Tạo mã giảm giá - Bước 3");
                     });
                 }
