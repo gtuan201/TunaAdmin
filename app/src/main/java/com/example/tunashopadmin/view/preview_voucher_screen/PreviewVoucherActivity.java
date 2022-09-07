@@ -12,6 +12,8 @@ import android.view.View;
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityPreviewVoucherBinding;
 import com.example.tunashopadmin.model.Voucher;
+import com.example.tunashopadmin.view.add_voucher_screen.StepVoucherActivity;
+import com.example.tunashopadmin.viewmodel.AddVoucherViewModel;
 import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 
 public class PreviewVoucherActivity extends AppCompatActivity {
@@ -29,6 +31,8 @@ public class PreviewVoucherActivity extends AppCompatActivity {
         String max = intent.getStringExtra("maxPrice");
         String timeStart = intent.getStringExtra("timeStart");
         String timeCancel = intent.getStringExtra("timeCancel");
+        AddVoucherViewModel viewModel = new ViewModelProvider(this).get(AddVoucherViewModel.class);
+        StepVoucherActivity activity = new StepVoucherActivity();
         binding.nameVoucher.setText(name);
         binding.tvMinTotalPrice.setText(String.format("%sđ", min));
         binding.tvTimeStart.setText(timeStart);
@@ -59,5 +63,9 @@ public class PreviewVoucherActivity extends AppCompatActivity {
             binding.tvPriceVoucher.setText(String.format("%s %%", percent));
         }
         binding.btBackPreviewVoucher.setOnClickListener(v -> onBackPressed());
+        binding.btComplete.setOnClickListener(v -> {
+            long timestamp = System.currentTimeMillis();
+            viewModel.AddVoucher(timestamp,name,subject,timeStart,timeCancel,amount,percent,min,max,type);
+        });
     }
 }

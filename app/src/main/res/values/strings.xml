@@ -48,5 +48,5 @@
     <string name="input_name_voucher">Nhập tên của mã giảm giá…</string>
     <string name="complete">Hoàn tất</string>
     <string name="type_voucher">Loại mã giảm giá</string>
-    <string name="object">Đối tượng sử dụng được voucher</string>
+    <string name="object">Đối tượng sử dụng được mã giảm giá này</string>
 </resources>
