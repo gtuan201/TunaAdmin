@@ -1,6 +1,7 @@
 package com.example.tunashopadmin.view.add_voucher_screen.fragment_step_add_voucher;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -29,10 +30,9 @@ import com.example.tunashopadmin.databinding.FragmentStepThreeBinding;
 import com.example.tunashopadmin.view.preview_voucher_screen.PreviewVoucherActivity;
 import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
 
-import java.util.Objects;
-
 public class StepThreeFragment extends Fragment {
     private FragmentStepThreeBinding binding;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class StepThreeFragment extends Fragment {
                     voucher.setTimeStart(timeStart);
                     voucher.setTimeCancel(timeCancel);
                     voucher.setNameVoucher(nameVoucher);
-                    Intent intent = new Intent(getActivity(), PreviewVoucherActivity.class);
+                    Intent intent = new Intent(getContext(), PreviewVoucherActivity.class);
                     intent.putExtra("nameVoucher",voucher.getNameVoucher());
                     intent.putExtra("type",voucher.getType());
                     intent.putExtra("object",voucher.getSubject());
@@ -61,7 +61,7 @@ public class StepThreeFragment extends Fragment {
                     intent.putExtra("maxPrice",voucher.getMaxOfPercent());
                     intent.putExtra("timeStart",voucher.getTimeStart());
                     intent.putExtra("timeCancel",voucher.getTimeCancel());
-                    requireContext().startActivity(intent);
+//                    getContext().startActivity(intent);
                 });
             }
             else {

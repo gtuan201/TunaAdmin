@@ -66,6 +66,7 @@ public class PreviewVoucherActivity extends AppCompatActivity {
         binding.btComplete.setOnClickListener(v -> {
             long timestamp = System.currentTimeMillis();
             viewModel.AddVoucher(timestamp,name,subject,timeStart,timeCancel,amount,percent,min,max,type);
+            finish();
         });
     }
 }

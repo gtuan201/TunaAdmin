@@ -2,7 +2,6 @@ package com.example.tunashopadmin.view.add_voucher_screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
@@ -34,29 +33,30 @@ public class StepVoucherActivity extends AppCompatActivity {
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_longAnimTime))
                 .commit();
-        manager.beginTransaction().replace(R.id.step_container, stepOneFragment).addToBackStack(null).commit();
+        manager.beginTransaction().add(R.id.step_container, stepOneFragment).addToBackStack(null).commit();
+        manager.beginTransaction().add(R.id.step_container, stepTwoFragment).hide(stepTwoFragment).addToBackStack(null).commit();
+        manager.beginTransaction().add(R.id.step_container, stepThreeFragment).hide(stepThreeFragment).addToBackStack(null).commit();
     }
 
     public void nextStep() {
         FragmentManager manager = getSupportFragmentManager();
         if (stepOneFragment.isVisible()){
-            manager.beginTransaction().replace(R.id.step_container, stepTwoFragment).addToBackStack(null).commit();
+            manager.beginTransaction().show(stepTwoFragment).hide(stepOneFragment).commit();
             binding.stepView.go(1, true);
         }
-        else if (stepTwoFragment.isVisible()){
-            manager.beginTransaction().replace(R.id.step_container, stepThreeFragment).addToBackStack(null).commit();
+        if (stepTwoFragment.isVisible()){
+            manager.beginTransaction().show(stepThreeFragment).hide(stepTwoFragment).commit();
             binding.stepView.go(2, true);
         }
     }
-
     @Override
     public void onBackPressed() {
         if(stepThreeFragment.isVisible()){
-            manager.beginTransaction().replace(R.id.step_container, stepTwoFragment).addToBackStack(null).commit();
+            manager.beginTransaction().show(stepTwoFragment).hide(stepThreeFragment).commit();
             binding.stepView.go(1, true);
         }
         else if (stepTwoFragment.isVisible()){
-            manager.beginTransaction().replace(R.id.step_container, stepOneFragment).addToBackStack(null).commit();
+            manager.beginTransaction().show(stepOneFragment).hide(stepTwoFragment).commit();
             binding.stepView.go(0, true);
         }
         else if (stepOneFragment.isVisible()){

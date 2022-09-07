@@ -78,7 +78,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/layout_button"
+            android:id="@+id/layout_button_step1"
             android:orientation="vertical"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"

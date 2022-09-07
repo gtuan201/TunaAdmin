@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.FragmentStepTwoBinding;
@@ -65,7 +66,7 @@ public class StepTwoFragment extends Fragment {
                     break;
             }
         });
-        binding.btContinue.setOnClickListener(v -> {
+        binding.btContinueStep2.setOnClickListener(v -> {
             if (type.equals("percent")){
                 String percent = binding.etPercent.getText().toString().trim();
                 String max = binding.etMaxOfPercent.getText().toString().trim();
