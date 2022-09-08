@@ -1,14 +1,22 @@
 package com.example.tunashopadmin.view.add_voucher_screen.fragment_step_add_voucher;
 
+import static androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,10 +29,17 @@ import com.example.tunashopadmin.databinding.FragmentStepTwoBinding;
 import com.example.tunashopadmin.model.Voucher;
 import com.example.tunashopadmin.view.add_voucher_screen.StepVoucherActivity;
 import com.example.tunashopadmin.viewmodel.StepAddVoucherViewModel;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
+
+import java.io.IOException;
+import java.util.List;
 
 public class StepTwoFragment extends Fragment {
 
     private FragmentStepTwoBinding binding;
+    public static final int PICK_IMAGE = 1;
+    private Uri imgUri;
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -120,4 +135,5 @@ public class StepTwoFragment extends Fragment {
         });
         return view;
     }
+
 }

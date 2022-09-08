@@ -2,19 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="80dp"
-        android:gravity="center_vertical">
-        <com.makeramen.roundedimageview.RoundedImageView
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
             android:id="@+id/img_voucher"
-            android:background="@drawable/img_voucher_back"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="12dp"
-            app:riv_corner_radius="5dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="80dp"
+            android:background="@drawable/img_voucher_back"
+            android:fontFamily="@font/baloo_thambi"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:text="70%"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
         <View
             android:id="@+id/line_dash"
             android:layout_toEndOf="@id/img_voucher"
@@ -22,12 +27,34 @@
             android:layout_width="4dp"
             android:layout_marginVertical="10dp"
             android:layout_height="match_parent"/>
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="3dp"
             android:layout_toEndOf="@id/img_voucher"
             android:background="@drawable/infor_voucher_back"
-            android:layout_marginStart="2dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/item_name_voucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name voucher"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/item_min_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="min price" />
+
+            <TextView
+                android:id="@+id/item_time_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time cancel" />
 
         </LinearLayout>
     </RelativeLayout>
