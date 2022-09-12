@@ -50,4 +50,5 @@
     <string name="type_voucher">Loại mã giảm giá</string>
     <string name="object">Đối tượng sử dụng được mã giảm giá này</string>
     <string name="add_img_voucher">Thêm hình ảnh mô tả voucher</string>
+    <string name="name_shop">Tuna Coffee</string>
 </resources>

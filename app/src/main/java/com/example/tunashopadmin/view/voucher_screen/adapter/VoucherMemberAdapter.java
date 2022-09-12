@@ -44,7 +44,7 @@ public class VoucherMemberAdapter extends RecyclerView.Adapter<VoucherMemberAdap
             String amount = voucher.getAmount();
             int intAmount = Integer.parseInt(amount);
             holder.binding.itemNameVoucher.setText(String.format("Giảm %sđ", amount));
-            if (10000 <= intAmount && intAmount <1000000){
+            if (1000 <= intAmount && intAmount <1000000){
                 intAmount = intAmount / 1000;
                 holder.binding.imgVoucher.setText(String.format("%sK", intAmount));
             }

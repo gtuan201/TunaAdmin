@@ -66,8 +66,7 @@ public class PreviewVoucherActivity extends AppCompatActivity {
             long timestamp = System.currentTimeMillis();
             viewModel.AddVoucher(timestamp,name,subject,timeStart,timeCancel,amount,percent,min,max,type);
             new Handler().postDelayed(() -> {
-                Intent intent1 = new Intent(PreviewVoucherActivity.this, AddVoucherActivity.class);
-                startActivity(intent1);
+                onBackPressed();
                 finish();
                 StepVoucherActivity.fa.finish();
             },1000);
