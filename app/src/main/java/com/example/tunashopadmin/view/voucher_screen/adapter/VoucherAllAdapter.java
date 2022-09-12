@@ -37,7 +37,7 @@ public class VoucherAllAdapter extends RecyclerView.Adapter<VoucherAllAdapter.Vo
             holder.binding.valueVoucher.setText(String.format("Giảm %s%% giá trị đơn hàng", voucher.getPercent()));
         }
         else {
-            holder.binding.valueVoucher.setText(String.format("Giảm %s đ", voucher.getAmount()));
+            holder.binding.valueVoucher.setText(String.format("Giảm %sđ", voucher.getAmount()));
         }
         holder.binding.timeStart.setText(String.format("Bắt đầu: %s", voucher.getTimeStart()));
         holder.binding.timeCancel.setText(String.format("Hết hạn: %s", voucher.getTimeCancel()));
