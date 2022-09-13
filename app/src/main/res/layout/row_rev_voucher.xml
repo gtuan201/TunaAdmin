@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="10dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="@drawable/voucher_back"
+            android:layout_height="130dp">
+            <TextView
+                android:id="@+id/name_voucher"
+                android:text="#TUNA153"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="125dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/subject"
+                android:text="Đối tượng: Toàn bộ cửa hàng"
+                android:layout_marginStart="125dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/value"
+                android:text="giảm 50% giá trị của đơn hàng"
+                android:layout_marginStart="125dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/is_coming_or_canceled"
+                android:text="Hết hạn"
+                android:layout_marginStart="125dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_detail_voucher"
+            android:text="Chi tiết"
+            android:textColor="#E67777"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:padding="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</layout>

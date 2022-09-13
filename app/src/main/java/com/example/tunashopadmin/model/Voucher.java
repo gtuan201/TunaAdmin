@@ -1,14 +1,14 @@
 package com.example.tunashopadmin.model;
 
 public class Voucher {
-    String id,imgVoucher,nameVoucher,subject,timeStart,timeCancel,amount,percent,minTotalPrice,maxOfPercent,type;
+    String id, status,nameVoucher,subject,timeStart,timeCancel,amount,percent,minTotalPrice,maxOfPercent,type;
 
     public Voucher() {
     }
 
-    public Voucher(String id, String imgVoucher, String nameVoucher, String subject, String timeStart, String timeCancel, String amount, String percent, String minTotalPrice, String maxOfPercent, String type) {
+    public Voucher(String id, String status, String nameVoucher, String subject, String timeStart, String timeCancel, String amount, String percent, String minTotalPrice, String maxOfPercent, String type) {
         this.id = id;
-        this.imgVoucher = imgVoucher;
+        this.status = status;
         this.nameVoucher = nameVoucher;
         this.subject = subject;
         this.timeStart = timeStart;
@@ -28,12 +28,12 @@ public class Voucher {
         this.id = id;
     }
 
-    public String getImgVoucher() {
-        return imgVoucher;
+    public String getStatus() {
+        return status;
     }
 
-    public void setImgVoucher(String imgVoucher) {
-        this.imgVoucher = imgVoucher;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getNameVoucher() {

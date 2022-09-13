@@ -51,4 +51,6 @@
     <string name="object">Đối tượng sử dụng được mã giảm giá này</string>
     <string name="add_img_voucher">Thêm hình ảnh mô tả voucher</string>
     <string name="name_shop">Tuna Coffee</string>
+    <string name="pending_voucher">Những voucher sắp tới sẽ có hiệu lực</string>
+    <string name="expired_voucher">Voucher đã hết hạn</string>
 </resources>

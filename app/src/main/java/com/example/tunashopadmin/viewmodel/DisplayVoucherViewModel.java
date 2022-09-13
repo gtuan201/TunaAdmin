@@ -19,14 +19,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 public class DisplayVoucherViewModel extends ViewModel {
     private final MutableLiveData<List<Voucher>> voucherMemberLiveData;
     private final MutableLiveData<List<Voucher>> voucherAllLiveData;
+    private final MutableLiveData<List<Voucher>> voucherPendingLiveData;
+    private final MutableLiveData<List<Voucher>> voucherExpiredLiveData;
     public DisplayVoucherViewModel() {
         voucherMemberLiveData = new MutableLiveData<>();
         voucherAllLiveData  = new MutableLiveData<>();
+        voucherPendingLiveData = new MutableLiveData<>();
+        voucherExpiredLiveData = new MutableLiveData<>();
     }
     @SuppressLint("SimpleDateFormat")
     public MutableLiveData<List<Voucher>> getVoucherMemberLiveData() {
@@ -64,7 +67,7 @@ public class DisplayVoucherViewModel extends ViewModel {
                         voucher.setNameVoucher(name);
                         voucher.setSubject(subject);
                         voucher.setType(type);
-                        voucher.setImgVoucher(imgVoucher);
+                        voucher.setStatus(imgVoucher);
                         voucher.setMinTotalPrice(min);
                         voucher.setTimeStart(timeStart);
                         voucher.setTimeCancel(timeCancel);
@@ -124,7 +127,7 @@ public class DisplayVoucherViewModel extends ViewModel {
                         voucher.setNameVoucher(name);
                         voucher.setSubject(subject);
                         voucher.setType(type);
-                        voucher.setImgVoucher(imgVoucher);
+                        voucher.setStatus(imgVoucher);
                         voucher.setMinTotalPrice(min);
                         voucher.setTimeStart(timeStart);
                         voucher.setTimeCancel(timeCancel);
@@ -147,5 +150,125 @@ public class DisplayVoucherViewModel extends ViewModel {
             }
         });
         return voucherAllLiveData;
+    }
+
+    public MutableLiveData<List<Voucher>> getVoucherPendingLiveData() {
+        final List<Voucher> list = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Voucher");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    @SuppressLint("SimpleDateFormat")
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                    Date currentDate = Calendar.getInstance().getTime();
+                    String id = ""+dataSnapshot.child("id").getValue();
+                    String name = ""+dataSnapshot.child("name").getValue();
+                    String subject = ""+dataSnapshot.child("subject").getValue();
+                    String type = ""+dataSnapshot.child("type").getValue();
+                    String imgVoucher = ""+dataSnapshot.child("imgVoucher").getValue();
+                    String amount = ""+dataSnapshot.child("amount").getValue();
+                    String percent = ""+dataSnapshot.child("percent").getValue();
+                    String min = ""+dataSnapshot.child("minTotalPrice").getValue();
+                    String max = ""+dataSnapshot.child("maxPercent").getValue();
+                    String timeStart = ""+dataSnapshot.child("timeStart").getValue();
+                    String timeCancel = ""+dataSnapshot.child("timeCancel").getValue();
+                    Date dateStart = new Date();
+                    try {
+                        dateStart = dateFormat.parse(timeStart);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    if (currentDate.before(dateStart)){
+                        Voucher voucher = new Voucher();
+                        voucher.setId(id);
+                        voucher.setNameVoucher(name);
+                        voucher.setSubject(subject);
+                        voucher.setType(type);
+                        voucher.setStatus(imgVoucher);
+                        voucher.setMinTotalPrice(min);
+                        voucher.setTimeStart(timeStart);
+                        voucher.setTimeCancel(timeCancel);
+                        voucher.setStatus("isComing");
+                        if (type.equals("percent")){
+                            voucher.setPercent(percent);
+                            voucher.setMaxOfPercent(max);
+                        }
+                        else {
+                            voucher.setAmount(amount);
+                        }
+                        list.add(voucher);
+                    }
+                }
+                voucherPendingLiveData.postValue(list);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return voucherPendingLiveData;
+    }
+
+    public MutableLiveData<List<Voucher>> getVoucherExpiredLiveData() {
+        final List<Voucher> voucherList = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Voucher");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                voucherList.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    @SuppressLint("SimpleDateFormat")
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                    Date currentDate = Calendar.getInstance().getTime();
+                    String id = ""+dataSnapshot.child("id").getValue();
+                    String name = ""+dataSnapshot.child("name").getValue();
+                    String subject = ""+dataSnapshot.child("subject").getValue();
+                    String type = ""+dataSnapshot.child("type").getValue();
+                    String imgVoucher = ""+dataSnapshot.child("imgVoucher").getValue();
+                    String amount = ""+dataSnapshot.child("amount").getValue();
+                    String percent = ""+dataSnapshot.child("percent").getValue();
+                    String min = ""+dataSnapshot.child("minTotalPrice").getValue();
+                    String max = ""+dataSnapshot.child("maxPercent").getValue();
+                    String timeStart = ""+dataSnapshot.child("timeStart").getValue();
+                    String timeCancel = ""+dataSnapshot.child("timeCancel").getValue();
+                    Date dateCancel = new Date();
+                    try {
+                        dateCancel = dateFormat.parse(timeCancel);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    if (currentDate.after(dateCancel)){
+                        Voucher voucher = new Voucher();
+                        voucher.setId(id);
+                        voucher.setNameVoucher(name);
+                        voucher.setSubject(subject);
+                        voucher.setType(type);
+                        voucher.setStatus(imgVoucher);
+                        voucher.setMinTotalPrice(min);
+                        voucher.setTimeStart(timeStart);
+                        voucher.setTimeCancel(timeCancel);
+                        voucher.setStatus("Cancel");
+                        if (type.equals("percent")){
+                            voucher.setPercent(percent);
+                            voucher.setMaxOfPercent(max);
+                        }
+                        else {
+                            voucher.setAmount(amount);
+                        }
+                        voucherList.add(voucher);
+                    }
+                }
+                voucherExpiredLiveData.postValue(voucherList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return voucherExpiredLiveData;
     }
 }
