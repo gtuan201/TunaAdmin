@@ -2,11 +2,16 @@ package com.example.tunashopadmin.view.voucher_screen.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.tunashopadmin.databinding.RowRevVoucherAllBinding;
 import com.example.tunashopadmin.model.Voucher;
+import com.example.tunashopadmin.viewmodel.OpenBottomSheetViewModel;
+
 import java.util.List;
 
 public class VoucherAllAdapter extends RecyclerView.Adapter<VoucherAllAdapter.VoucherAllViewHolder>{
@@ -41,6 +46,13 @@ public class VoucherAllAdapter extends RecyclerView.Adapter<VoucherAllAdapter.Vo
         }
         holder.binding.timeStart.setText(String.format("Bắt đầu: %s", voucher.getTimeStart()));
         holder.binding.timeCancel.setText(String.format("Hết hạn: %s", voucher.getTimeCancel()));
+        OpenBottomSheetViewModel viewModel = new ViewModelProvider((ViewModelStoreOwner) context).get(OpenBottomSheetViewModel.class);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.openBottomSheet(voucher);
+            }
+        });
     }
 
     @Override

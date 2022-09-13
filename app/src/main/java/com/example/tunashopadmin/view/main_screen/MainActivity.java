@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity{
                     fragmentManager.beginTransaction().hide(active).show(staffManageFragment).commit();
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     active = staffManageFragment;
+                    return true;
 
             }
             return false;
