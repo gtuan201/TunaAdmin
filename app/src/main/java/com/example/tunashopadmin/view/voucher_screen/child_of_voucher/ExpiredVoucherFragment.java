@@ -1,20 +1,16 @@
 package com.example.tunashopadmin.view.voucher_screen.child_of_voucher;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.FragmentExpiredVoucherBinding;
-import com.example.tunashopadmin.databinding.FragmentPendingVoucherBinding;
 import com.example.tunashopadmin.view.voucher_screen.adapter.PendingAndExpiredVoucherAdapter;
 import com.example.tunashopadmin.viewmodel.DisplayVoucherViewModel;
 

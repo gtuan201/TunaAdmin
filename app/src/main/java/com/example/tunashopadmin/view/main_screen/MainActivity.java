@@ -19,6 +19,7 @@ import com.example.tunashopadmin.databinding.ActivityMainBinding;
 import com.example.tunashopadmin.view.add_voucher_screen.AddVoucherActivity;
 import com.example.tunashopadmin.view.chat_sceen.ChatFragment;
 import com.example.tunashopadmin.view.main_screen.fragment_order_listt.OrderListFragment;
+import com.example.tunashopadmin.view.staff_manage_screen.StaffManageFragment;
 import com.example.tunashopadmin.view.voucher_screen.VoucherFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity{
     OrderListFragment orderListFragment = new OrderListFragment();
     VoucherFragment voucherFragment = new VoucherFragment();
     ChatFragment chatFragment = new ChatFragment();
+    StaffManageFragment staffManageFragment = new StaffManageFragment();
     Fragment active = orderListFragment;
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity{
         fragmentManager.beginTransaction().add(R.id.container_fragment,orderListFragment,"0").commit();
         fragmentManager.beginTransaction().add(R.id.container_fragment,voucherFragment,"1").hide(voucherFragment).commit();
         fragmentManager.beginTransaction().add(R.id.container_fragment,chatFragment,"2").hide(chatFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.container_fragment,staffManageFragment,"4").hide(staffManageFragment).commit();
         inforUser();
         binding.navDrawerView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -83,6 +86,11 @@ public class MainActivity extends AppCompatActivity{
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     active = chatFragment;
                     return true;
+                case R.id.staff_manager:
+                    fragmentManager.beginTransaction().hide(active).show(staffManageFragment).commit();
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+                    active = staffManageFragment;
+
             }
             return false;
         });
