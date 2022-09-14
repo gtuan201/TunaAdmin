@@ -1,6 +1,7 @@
 package com.example.tunashopadmin.repository;
 
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.tunashopadmin.view.main_screen.MainActivity;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,12 +42,12 @@ public class AuthenticationRepository {
             firebaseUserMutableLiveData.postValue(auth.getCurrentUser());
         }
     }
-    public void register(String email, String password){
+    public void register(String email, String password, String name, String type, String address, String phone){
         auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()){
                         firebaseUserMutableLiveData.postValue(auth.getCurrentUser());
-                        putDataToRealtime();
+                        putDataToRealtime(name,type,address,phone);
                     }
                     else {
                         Toast.makeText(application,"Đăng ký thất bại! Vui lòng thử lại",Toast.LENGTH_SHORT).show();
@@ -53,15 +55,21 @@ public class AuthenticationRepository {
                 });
     }
 
-    private void putDataToRealtime() {
+    private void putDataToRealtime(String name, String type, String address, String phone) {
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("imgUser","");
         hashMap.put("uid",auth.getCurrentUser().getUid());
-        hashMap.put("user_name","");
-        hashMap.put("userType","");
+        hashMap.put("user_name",name);
+        hashMap.put("userType",type);
+        hashMap.put("address",address);
+        hashMap.put("phone",phone);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
         reference.child(auth.getCurrentUser().getUid())
-                .setValue(hashMap);
+                .setValue(hashMap)
+                .addOnSuccessListener(unused -> {
+                    auth.signOut();
+                    Toast.makeText(application, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                });
     }
 
     public void login(String email, String password){
@@ -105,6 +113,5 @@ public class AuthenticationRepository {
 
     public void signOut(){
         auth.signOut();
-        userLoggedMutableLiveData.postValue(true);
     }
 }

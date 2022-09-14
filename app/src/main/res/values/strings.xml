@@ -53,4 +53,10 @@
     <string name="name_shop">Tuna Coffee</string>
     <string name="pending_voucher">Những voucher sắp tới sẽ có hiệu lực</string>
     <string name="expired_voucher">Voucher đã hết hạn</string>
+    <string name="staff_manage">Quản lý nhân viên</string>
+    <string name="creat_user">Thêm nhân viên</string>
+    <string name="update_user">Sửa thông tin nhân viên</string>
+    <string name="delete_user">Xóa nhân viên</string>
+    <string name="admin">Trao quyền admin</string>
+    <string name="select_shop">Chọn địa điểm làm việc</string>
 </resources>

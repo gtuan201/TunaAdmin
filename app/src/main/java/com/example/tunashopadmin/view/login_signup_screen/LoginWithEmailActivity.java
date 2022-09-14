@@ -47,7 +47,7 @@ public class LoginWithEmailActivity extends AppCompatActivity {
                     public void run() {
                         progressDialog.dismiss();
                     }
-                },2500);
+                },2000);
                 loginViewModel.login(email,password);
             }
         });

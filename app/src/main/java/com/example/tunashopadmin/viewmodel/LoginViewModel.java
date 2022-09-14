@@ -29,8 +29,8 @@ public class LoginViewModel extends AndroidViewModel {
         userData = repository.getFirebaseUserMutableLiveData();
         loggedStatus = repository.getUserLoggedMutableLiveData();
     }
-    public void register(String email, String password){
-        repository.register(email,password);
+    public void register(String email, String password , String name, String type, String address, String phone){
+        repository.register(email,password,name,type,address,phone);
     }
     public void login(String email, String password){
         repository.login(email,password);

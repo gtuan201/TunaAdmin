@@ -1,5 +1,6 @@
 package com.example.tunashopadmin.view.splash_screen;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,24 +13,28 @@ import com.example.tunashopadmin.view.main_screen.MainActivity;
 import com.example.tunashopadmin.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
-
+    private String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         new Handler().postDelayed(() -> {
-            if (user!=null){
+            if (user != null){
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                finish();
             }
             else {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                finish();
             }
+            finish();
         },1700);
     }
 }

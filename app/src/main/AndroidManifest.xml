@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tunashopadmin">
 
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -13,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TunaShopAdmin">
+        <activity
+            android:name=".view.staff_manage_screen.CreatUserActivity"
+            android:exported="false" />
         <activity
             android:name=".view.preview_voucher_screen.PreviewVoucherActivity"
             android:exported="false" />

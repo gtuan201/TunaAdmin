@@ -1,11 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="30dp">
+            <TextView
+                android:id="@+id/tv_creat_user"
+                android:text="@string/creat_user"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@drawable/button_custom6"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                app:drawableTopCompat="@drawable/creat_user" />
+            <TextView
+                android:id="@+id/tv_update_user"
+                android:text="@string/update_user"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@drawable/button_custom6"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                app:drawableTopCompat="@drawable/update_user"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="30dp">
+            <TextView
+                android:id="@+id/tv_delete_user"
+                android:text="@string/delete_user"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@drawable/button_custom6"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                app:drawableTopCompat="@drawable/delete_user" />
+            <TextView
+                android:id="@+id/tv_admin"
+                android:text="@string/admin"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@drawable/button_custom6"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                app:drawableTopCompat="@drawable/admin"/>
+        </LinearLayout>
     </LinearLayout>
 
 </layout>

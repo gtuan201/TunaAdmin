@@ -41,6 +41,16 @@
                         android:layout_width="250dp"
                         android:layout_height="30dp"
                         android:visibility="gone"/>
+                    <TextView
+                        android:id="@+id/title_staff_manage"
+                        android:text="@string/staff_manage"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_width="250dp"
+                        android:layout_height="30dp"
+                        android:visibility="gone"/>
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/bt_help"
                         android:background="@drawable/help"
