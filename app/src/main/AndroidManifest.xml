@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TunaShopAdmin">
         <activity
+            android:name=".view.staff_manage_screen.UpdateStaffActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.staff_manage_screen.CreatUserActivity"
             android:exported="false" />
         <activity

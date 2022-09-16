@@ -2,76 +2,52 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_above="@id/layout_button"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="center_vertical"
-            android:layout_marginHorizontal="30dp">
+            android:layout_height="match_parent">
             <TextView
+                android:text="@string/list_employee"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rev_staff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/layout_button"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+           <View
+               android:background="@color/grey"
+               android:layout_width="match_parent"
+               android:layout_height="1dp"/>
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/tv_creat_user"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textAllCaps="false"
                 android:text="@string/creat_user"
                 android:padding="10dp"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:background="@drawable/button_custom6"
                 android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                app:drawableTopCompat="@drawable/creat_user" />
-            <TextView
-                android:id="@+id/tv_update_user"
-                android:text="@string/update_user"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:background="@drawable/button_custom6"
-                android:layout_marginStart="20dp"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                app:drawableTopCompat="@drawable/update_user"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="center_vertical"
-            android:layout_marginHorizontal="30dp">
-            <TextView
-                android:id="@+id/tv_delete_user"
-                android:text="@string/delete_user"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:background="@drawable/button_custom6"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                app:drawableTopCompat="@drawable/delete_user" />
-            <TextView
-                android:id="@+id/tv_admin"
-                android:text="@string/admin"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:background="@drawable/button_custom6"
-                android:layout_marginStart="20dp"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                app:drawableTopCompat="@drawable/admin"/>
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>

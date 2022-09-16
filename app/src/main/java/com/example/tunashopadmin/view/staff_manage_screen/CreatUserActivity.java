@@ -1,6 +1,5 @@
 package com.example.tunashopadmin.view.staff_manage_screen;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -27,15 +26,9 @@ import com.example.tunashopadmin.model.Shop;
 import com.example.tunashopadmin.view.login_signup_screen.LoginActivity;
 import com.example.tunashopadmin.view.staff_manage_screen.adapter.BottomSheetShopAdapter;
 import com.example.tunashopadmin.viewmodel.LoginViewModel;
+import com.example.tunashopadmin.viewmodel.DisplayStaffShopViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class CreatUserActivity extends AppCompatActivity implements OnItemClickListener{
     private ActivityCreatUserBinding binding;
@@ -84,31 +77,10 @@ public class CreatUserActivity extends AppCompatActivity implements OnItemClickL
         RecyclerView rev_shop = view.findViewById(R.id.rev_shop);
         LinearLayoutManager manager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         rev_shop.setLayoutManager(manager);
-        List<Shop> shopList = new ArrayList<>();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Shop");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                shopList.clear();
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    String imgShop = ""+dataSnapshot.child("ImgUrl").getValue();
-                    String nameShop = ""+dataSnapshot.child("name").getValue();
-                    String addressShop =""+dataSnapshot.child("address").getValue();
-                    Shop shop = new Shop();
-                    shop.setImgUrlShop(imgShop);
-                    shop.setName(nameShop);
-                    shop.setAddress(addressShop);
-                    shopList.add(shop);
-                }
-                BottomSheetShopAdapter adapter = new BottomSheetShopAdapter(shopList, CreatUserActivity.this);
-                rev_shop.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+        DisplayStaffShopViewModel viewModel = new ViewModelProvider(this).get(DisplayStaffShopViewModel.class);
+        viewModel.getListShopMutableLiveData().observe(this, shops -> {
+            BottomSheetShopAdapter adapter = new BottomSheetShopAdapter(shops,CreatUserActivity.this);
+            rev_shop.setAdapter(adapter);
         });
         bottomSheetDialog.show();
     }
@@ -126,15 +98,23 @@ public class CreatUserActivity extends AppCompatActivity implements OnItemClickL
             ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Vui lòng đợi");
             progressDialog.show();
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setTitle("Thông báo")
+                    .setMessage("Phiên đăng nhập hết hạn");
             new Handler().postDelayed(progressDialog::dismiss,1500);
-            new Handler().postDelayed(() -> new AlertDialog.Builder(CreatUserActivity.this)
-                    .setMessage("Phiên đăng nhập đã hết hạn")
-                    .show(),3500);
             viewModel.register(email,"123456",name,level,address,phone);
             new Handler().postDelayed(() -> {
-                startActivity(new Intent(CreatUserActivity.this, LoginActivity.class));
-                finishAffinity();
-            },5000);
+                if (FirebaseAuth.getInstance().getCurrentUser() == null){
+                    dialog.show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(CreatUserActivity.this, LoginActivity.class));
+                            finishAffinity();
+                        }
+                    },2000);
+                }
+            },3500);
         }
     }
 

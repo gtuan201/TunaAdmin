@@ -59,4 +59,6 @@
     <string name="delete_user">Xóa nhân viên</string>
     <string name="admin">Trao quyền admin</string>
     <string name="select_shop">Chọn địa điểm làm việc</string>
+    <string name="list_employee">Danh sách nhân viên</string>
+    <string name="delete">Xóa</string>
 </resources>

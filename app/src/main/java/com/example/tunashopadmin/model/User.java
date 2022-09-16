@@ -1,17 +1,18 @@
 package com.example.tunashopadmin.model;
 
 public class User {
-    String imgUrl,shopManage,uid,typeUser,name;
+    String imgUrl,shopManage,uid,typeUser,name,phone;
 
     public User() {
     }
 
-    public User(String imgUrl, String shopManage, String uid, String typeUser, String name) {
+    public User(String imgUrl, String shopManage, String uid, String typeUser, String name, String phone) {
         this.imgUrl = imgUrl;
         this.shopManage = shopManage;
         this.uid = uid;
         this.typeUser = typeUser;
         this.name = name;
+        this.phone = phone;
     }
 
     public String getImgUrl() {
@@ -52,5 +53,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
