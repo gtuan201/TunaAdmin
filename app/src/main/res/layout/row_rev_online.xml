@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="80dp"
+            android:layout_height="95dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user"
+                android:src="@color/teal_200"
+                android:scaleType="centerCrop"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+            <TextView
+                android:id="@+id/name"
+                android:text="Phương Thúy Nguyễn"
+                android:textSize="13sp"
+                android:gravity="center_horizontal"
+                android:maxLines="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:src="#00DD16"
+            app:civ_border_width="1.5dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginStart="50dp"
+            app:civ_border_color="@color/black"
+            android:scaleType="centerCrop"
+            android:layout_width="15dp"
+            android:layout_height="15dp"/>
+    </RelativeLayout>
+</layout>

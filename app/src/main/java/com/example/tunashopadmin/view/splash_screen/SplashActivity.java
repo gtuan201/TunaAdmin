@@ -27,9 +27,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
         new Handler().postDelayed(() -> {
             if (user != null){
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                reference.child(user.getUid()).child("online").setValue("online");
             }
             else {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));

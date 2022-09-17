@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity{
                     binding.navDrawerView.getMenu().findItem(R.id.wallet).setChecked(false);
                     active = staffManageFragment;
                     return true;
+                case R.id.setting:
+                    FirebaseAuth.getInstance().signOut();
                 case R.id.order_list:
                 default:
                     fragmentManager.beginTransaction().hide(active).show(orderListFragment).commit();
@@ -126,7 +128,7 @@ public class MainActivity extends AppCompatActivity{
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String name = ""+snapshot.child("user_name").getValue();
                         String position = ""+snapshot.child("userType").getValue();
-                        String shopName = ""+snapshot.child("shop").getValue();
+                        String shopName = ""+snapshot.child("address").getValue();
                         tvName.setText(String.format("%s - %s", name, position));
                         tvShop.setText(shopName);
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Shop");

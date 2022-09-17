@@ -42,6 +42,13 @@ public class AuthenticationRepository {
             firebaseUserMutableLiveData.postValue(auth.getCurrentUser());
         }
     }
+    public void creatUser(String email, String password, String name, String type, String address, String phone){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        reference.child(auth.getUid()).child("online").setValue("offline");
+        register(email, password, name, type, address, phone);
+
+    }
     public void register(String email, String password, String name, String type, String address, String phone){
         auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(task -> {
@@ -80,6 +87,7 @@ public class AuthenticationRepository {
                         checkUser();
                     }
                     else {
+                        auth.signOut();
                         Toast.makeText(application,"Đăng nhập thất bại",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -95,6 +103,9 @@ public class AuthenticationRepository {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String userType = ""+snapshot.child("userType").getValue();
                         if (userType.equals("admin")){
+                            HashMap<String,Object> hashMap = new HashMap<>();
+                            hashMap.put("online","online");
+                            reference.child(user.getUid()).updateChildren(hashMap);
                             Intent intent = new Intent(application, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             application.startActivity(intent);

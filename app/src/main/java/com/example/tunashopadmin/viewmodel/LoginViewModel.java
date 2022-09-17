@@ -35,6 +35,9 @@ public class LoginViewModel extends AndroidViewModel {
     public void login(String email, String password){
         repository.login(email,password);
     }
+    public void creatUser(String email, String password , String name, String type, String address, String phone){
+        repository.creatUser(email, password, name, type, address, phone);
+    }
     public void signOut(){
         repository.signOut();
     }

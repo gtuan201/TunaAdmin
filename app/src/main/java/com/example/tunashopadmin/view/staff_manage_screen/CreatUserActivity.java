@@ -27,8 +27,11 @@ import com.example.tunashopadmin.view.login_signup_screen.LoginActivity;
 import com.example.tunashopadmin.view.staff_manage_screen.adapter.BottomSheetShopAdapter;
 import com.example.tunashopadmin.viewmodel.LoginViewModel;
 import com.example.tunashopadmin.viewmodel.DisplayStaffShopViewModel;
+import com.example.tunashopadmin.viewmodel.OfflineViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CreatUserActivity extends AppCompatActivity implements OnItemClickListener{
     private ActivityCreatUserBinding binding;
@@ -102,16 +105,13 @@ public class CreatUserActivity extends AppCompatActivity implements OnItemClickL
             dialog.setTitle("Thông báo")
                     .setMessage("Phiên đăng nhập hết hạn");
             new Handler().postDelayed(progressDialog::dismiss,1500);
-            viewModel.register(email,"123456",name,level,address,phone);
+            viewModel.creatUser(email,"123456",name,level,address,phone);
             new Handler().postDelayed(() -> {
                 if (FirebaseAuth.getInstance().getCurrentUser() == null){
                     dialog.show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            startActivity(new Intent(CreatUserActivity.this, LoginActivity.class));
-                            finishAffinity();
-                        }
+                    new Handler().postDelayed(() -> {
+                        startActivity(new Intent(CreatUserActivity.this, LoginActivity.class));
+                        finishAffinity();
                     },2000);
                 }
             },3500);
