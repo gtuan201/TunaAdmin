@@ -102,7 +102,7 @@ public class AuthenticationRepository {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String userType = ""+snapshot.child("userType").getValue();
-                        if (userType.equals("admin")){
+                        if (userType.equals("admin") || userType.equals("staff") || userType.equals("manager")){
                             HashMap<String,Object> hashMap = new HashMap<>();
                             hashMap.put("online","online");
                             reference.child(user.getUid()).updateChildren(hashMap);

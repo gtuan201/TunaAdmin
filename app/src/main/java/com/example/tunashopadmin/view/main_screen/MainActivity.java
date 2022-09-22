@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityMainBinding;
 import com.example.tunashopadmin.view.add_voucher_screen.AddVoucherActivity;
-import com.example.tunashopadmin.view.chat_sceen.ChatFragment;
+import com.example.tunashopadmin.view.chat_screen.ChatFragment;
 import com.example.tunashopadmin.view.main_screen.fragment_order_listt.OrderListFragment;
 import com.example.tunashopadmin.view.staff_manage_screen.StaffManageFragment;
 import com.example.tunashopadmin.view.voucher_screen.VoucherFragment;

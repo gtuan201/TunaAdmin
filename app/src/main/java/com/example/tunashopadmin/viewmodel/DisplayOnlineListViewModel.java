@@ -33,10 +33,13 @@ public class DisplayOnlineListViewModel extends ViewModel {
                     String name = ""+dataSnapshot.child("user_name").getValue();
                     String online = ""+dataSnapshot.child("online").getValue();
                     String type = ""+dataSnapshot.child("userType").getValue();
-                    if (online.equals("online") && ( type.equals("admin") || type.equals("staff") || type.equals("shipper") || type.equals("manager"))){
+                    String uid = ""+dataSnapshot.child("uid").getValue();
+                    if (( type.equals("admin") || type.equals("staff") || type.equals("shipper") || type.equals("manager"))){
                         User user = new User();
+                        user.setUid(uid);
                         user.setImgUrl(imgUrl);
                         user.setName(name);
+                        user.setOnline(online);
                         list.add(user);
                     }
                 }
