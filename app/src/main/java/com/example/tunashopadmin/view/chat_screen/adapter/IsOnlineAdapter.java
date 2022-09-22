@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.RowRevOnlineBinding;
 import com.example.tunashopadmin.model.User;
 import com.example.tunashopadmin.view.chat_screen.ChatActivity;
+import com.example.tunashopadmin.viewmodel.MessageViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,6 +50,7 @@ public class IsOnlineAdapter extends RecyclerView.Adapter<IsOnlineAdapter.IsOnli
         if (user == null){
             return;
         }
+        MessageViewModel viewModel = new ViewModelProvider((ViewModelStoreOwner) context).get(MessageViewModel.class);
         if (!user.getImgUrl().isEmpty()){
             Picasso.get().load(user.getImgUrl()).into(holder.binding.imgUser);
         }
@@ -61,6 +65,8 @@ public class IsOnlineAdapter extends RecyclerView.Adapter<IsOnlineAdapter.IsOnli
         }
         holder.binding.name.setText(user.getName());
         holder.binding.imgUser.setOnClickListener(v -> {
+//            long timestamp = System.currentTimeMillis();
+//            viewModel.creatRoom(timestamp,user.getUid(),user.getImgUrl(),user.getName());
             Intent intent = new Intent(context, ChatActivity.class);
             intent.putExtra("name",user.getName());
             intent.putExtra("imgUser",user.getImgUrl());

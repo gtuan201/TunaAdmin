@@ -58,4 +58,17 @@ public class AddMessageRepository {
     public void toast(String id){
         Toast.makeText(application,id,Toast.LENGTH_SHORT).show();
     }
+    public void creatRoom(long id,String uidReceiver, String imgReceiver, String nameReceive){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chat");
+        assert user != null;
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("id",""+id);
+        hashMap.put("uid",user.getUid());
+        hashMap.put("uidReceiver",uidReceiver);
+        hashMap.put("imgReceiver",imgReceiver);
+        hashMap.put("nameReceiver",nameReceive);
+        reference.child(""+id).updateChildren(hashMap);
+        reference.child(""+id).child("Message").setValue("");
+    }
 }
