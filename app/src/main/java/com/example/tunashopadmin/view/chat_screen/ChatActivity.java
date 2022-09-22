@@ -45,6 +45,7 @@ public class ChatActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         binding.revMessage.setLayoutManager(manager);
         binding.revMessage.setHasFixedSize(true);
+        binding.revMessage.getRecycledViewPool().setMaxRecycledViews(0, 0);
         MessageViewModel viewModel = new ViewModelProvider(this).get(MessageViewModel.class);
         DisplayMessageViewModel displayMessageViewModel = new ViewModelProvider(this).get(DisplayMessageViewModel.class);
         Intent intent = getIntent();
