@@ -69,7 +69,7 @@ public class IsOnlineAdapter extends RecyclerView.Adapter<IsOnlineAdapter.IsOnli
 //            viewModel.creatRoom(timestamp,user.getUid(),user.getImgUrl(),user.getName());
             Intent intent = new Intent(context, ChatActivity.class);
             intent.putExtra("name",user.getName());
-            intent.putExtra("imgUser",user.getImgUrl());
+            intent.putExtra("imgUser",""+ user.getImgUrl());
             intent.putExtra("uid",user.getUid());
             context.startActivity(intent);
         });

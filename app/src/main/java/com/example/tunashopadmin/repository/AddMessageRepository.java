@@ -29,8 +29,13 @@ public class AddMessageRepository {
         HashMap<String,Object> map = new HashMap<>();
         map.put("uid",user.getUid());
         map.put("message",message);
+        map.put("Status","UnSeen");
         HashMap<String,Object> hashMap = new HashMap<>();
-        hashMap.put("lastMessage",message);
+        HashMap<String,Object> hashMap1 = new HashMap<>();
+        hashMap1.put("lastMessage",message);
+        hashMap1.put("uid",user.getUid());
+        hashMap1.put("Status","UnSeen");
+        reference.child(""+id).child("lastMessage").updateChildren(hashMap1);
         reference.child(""+id).updateChildren(hashMap);
         reference.child(""+id).child("Message").child(""+idMessage)
                 .updateChildren(map);
@@ -40,17 +45,21 @@ public class AddMessageRepository {
     public void addMessage(long id,String message, String uidReceiver, String imgReceiver, String nameReceiver) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chat");
-        assert user != null;
         HashMap<String,Object> map = new HashMap<>();
         map.put("uid",user.getUid());
         map.put("message",message);
+        map.put("Status","UnSeen");
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("id",""+id);
         hashMap.put("uid",user.getUid());
         hashMap.put("uidReceiver",uidReceiver);
         hashMap.put("imgReceiver",imgReceiver);
         hashMap.put("nameReceiver",nameReceiver);
-        hashMap.put("lastMessage",message);
+        HashMap<String,Object> hashMap1 = new HashMap<>();
+        hashMap1.put("lastMessage",message);
+        hashMap1.put("uid",user.getUid());
+        hashMap1.put("Status","UnSeen");
+        reference.child(""+id).child("lastMessage").updateChildren(hashMap1);
         reference.child(""+id).updateChildren(hashMap);
         reference.child(""+id).child("Message").child(""+id+ 1 )
                 .updateChildren(map);

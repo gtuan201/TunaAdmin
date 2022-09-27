@@ -28,22 +28,27 @@ public class ChatViewModel extends ViewModel {
         final List<Chat> chatList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chat");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        reference.child(user.getUid())
+        assert user != null;
+        reference
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         chatList.clear();
                         for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                            String id = ""+dataSnapshot.child("id").getValue();
                             String imgReceiver = ""+dataSnapshot.child("imgReceiver").getValue();
                             String nameReceiver = ""+dataSnapshot.child("nameReceiver").getValue();
                             String uidReceiver = ""+dataSnapshot.child("uidReceiver").getValue();
-                            String lastMessage = ""+dataSnapshot.child("lastMessage").getValue();
-                            Chat chat = new Chat();
-                            chat.setUidReceiver(uidReceiver);
-                            chat.setLastMessage(lastMessage);
-                            chat.setImgReceiver(imgReceiver);
-                            chat.setNameReceiver(nameReceiver);
-                            chatList.add(chat);
+                            String uid = ""+dataSnapshot.child("uid").getValue();
+                            if (user.getUid().equals(uid) || user.getUid().equals(uidReceiver)){
+                                Chat chat = new Chat();
+                                chat.setUid(uid);
+                                chat.setId(id);
+                                chat.setUidReceiver(uidReceiver);
+                                chat.setImgReceiver(imgReceiver);
+                                chat.setNameReceiver(nameReceiver);
+                                chatList.add(chat);
+                            }
                         }
                         chatMutableLiveData.postValue(chatList);
                     }

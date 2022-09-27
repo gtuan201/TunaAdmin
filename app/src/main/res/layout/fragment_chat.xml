@@ -13,6 +13,7 @@
             android:layout_height="105dp"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rev_chat_list"
+            tools:listitem="@layout/row_rev_chat_list"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

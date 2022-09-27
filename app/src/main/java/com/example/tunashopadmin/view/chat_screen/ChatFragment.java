@@ -50,12 +50,9 @@ public class ChatFragment extends Fragment {
             adapter = new IsOnlineAdapter(users,getContext());
             binding.revOnline.setAdapter(adapter);
         });
-        chatViewModel.getChatMutableLiveData().observe((LifecycleOwner) requireContext(), new Observer<List<Chat>>() {
-            @Override
-            public void onChanged(List<Chat> chats) {
-                chatListAdapter = new ChatListAdapter(chats,getContext());
-                binding.revChatList.setAdapter(chatListAdapter);
-            }
+        chatViewModel.getChatMutableLiveData().observe((LifecycleOwner) requireContext(), chats -> {
+            chatListAdapter = new ChatListAdapter(chats,getContext());
+            binding.revChatList.setAdapter(chatListAdapter);
         });
         return view;
     }

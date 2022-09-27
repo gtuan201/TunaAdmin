@@ -27,11 +27,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
@@ -47,7 +44,6 @@ public class ChatActivity extends AppCompatActivity {
         binding.revMessage.setHasFixedSize(true);
         binding.revMessage.getRecycledViewPool().setMaxRecycledViews(0, 0);
         MessageViewModel viewModel = new ViewModelProvider(this).get(MessageViewModel.class);
-        DisplayMessageViewModel displayMessageViewModel = new ViewModelProvider(this).get(DisplayMessageViewModel.class);
         Intent intent = getIntent();
         String uidReceiver = intent.getStringExtra("uid");
         String imgReceiver = intent.getStringExtra("imgUser");
@@ -91,16 +87,16 @@ public class ChatActivity extends AppCompatActivity {
                     long timestamp = System.currentTimeMillis();
                     viewModel.addMessage(timestamp,message,uidReceiver,imgReceiver,name);
                     Toast.makeText(ChatActivity.this,"add",Toast.LENGTH_SHORT).show();
-                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(binding.btSend.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
+//                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(binding.btSend.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
                     binding.etMessage.setText("");
                 }
                 else {
                     long timestamp2 = System.currentTimeMillis();
                     viewModel.updateMessage(Long.parseLong(id),message,timestamp2);
                     Toast.makeText(ChatActivity.this,"up",Toast.LENGTH_SHORT).show();
-                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(binding.btSend.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
+//                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(binding.btSend.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
                     binding.etMessage.setText("");
                 }
             }

@@ -1,18 +1,19 @@
 package com.example.tunashopadmin.model;
 
 public class Chat {
-    String id,imgReceiver, nameReceiver,lastMessage,timeLastMessage,uidReceiver;
+    String id,imgReceiver, nameReceiver,lastMessage,timeLastMessage,uidReceiver,uid;
 
     public Chat() {
     }
 
-    public Chat(String id, String imgReceiver, String nameReceiver, String lastMessage, String timeLastMessage, String uidReceiver) {
+    public Chat(String id, String imgReceiver, String nameReceiver, String lastMessage, String timeLastMessage, String uidReceiver, String uid) {
         this.id = id;
         this.imgReceiver = imgReceiver;
         this.nameReceiver = nameReceiver;
         this.lastMessage = lastMessage;
         this.timeLastMessage = timeLastMessage;
         this.uidReceiver = uidReceiver;
+        this.uid = uid;
     }
 
     public String getId() {
@@ -61,5 +62,13 @@ public class Chat {
 
     public void setUidReceiver(String uidReceiver) {
         this.uidReceiver = uidReceiver;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
