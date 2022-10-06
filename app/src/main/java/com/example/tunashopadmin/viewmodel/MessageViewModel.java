@@ -21,10 +21,4 @@ public class MessageViewModel extends AndroidViewModel {
     public void updateMessage(long id, String message,long idMessage){
         repository.updateMessage(id, message,idMessage);
     }
-    public void test(String id){
-        repository.toast(id);
-    }
-    public void creatRoom(long id,String uidReceiver, String imgReceiver, String nameReceive){
-        repository.creatRoom(id, uidReceiver, imgReceiver, nameReceive);
-    }
 }

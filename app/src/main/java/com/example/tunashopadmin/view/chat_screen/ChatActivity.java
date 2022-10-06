@@ -87,32 +87,26 @@ public class ChatActivity extends AppCompatActivity {
                     long timestamp = System.currentTimeMillis();
                     viewModel.addMessage(timestamp,message,uidReceiver,imgReceiver,name);
                     Toast.makeText(ChatActivity.this,"add",Toast.LENGTH_SHORT).show();
-//                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(binding.btSend.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
                     binding.etMessage.setText("");
                 }
                 else {
                     long timestamp2 = System.currentTimeMillis();
                     viewModel.updateMessage(Long.parseLong(id),message,timestamp2);
                     Toast.makeText(ChatActivity.this,"up",Toast.LENGTH_SHORT).show();
-//                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(binding.btSend.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
                     binding.etMessage.setText("");
                 }
             }
         });
+        binding.btBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void displayRev(String id) {
         DisplayMessageViewModel viewModel = new ViewModelProvider(this).get(DisplayMessageViewModel.class);
-        viewModel.getMessageMutableLiveData(id).observe(this, new Observer<List<Message>>() {
-            @Override
-            public void onChanged(List<Message> messages) {
-                adapter = new MessageAdapter(messages);
-                binding.revMessage.setAdapter(adapter);
-                binding.revMessage.setHasFixedSize(true);
-                binding.revMessage.scrollToPosition(adapter.getItemCount()-1);
-            }
+        viewModel.getMessageMutableLiveData(id).observe(this, messages -> {
+            adapter = new MessageAdapter(messages);
+            binding.revMessage.setAdapter(adapter);
+            binding.revMessage.setHasFixedSize(true);
+            binding.revMessage.scrollToPosition(adapter.getItemCount()-1);
         });
     }
 }

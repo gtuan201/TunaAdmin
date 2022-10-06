@@ -1,12 +1,12 @@
 package com.example.tunashopadmin.model;
 
 public class Coffee {
-    String urlImg, coffeeName, note, size, category,id,ice,quantity,totalPrice;
+    String urlImg, coffeeName, note, size, category,id,ice,quantity,totalPrice,price,status;
 
     public Coffee() {
     }
 
-    public Coffee(String urlImg, String coffeeName, String note, String size, String category, String id, String ice, String quantity, String totalPrice) {
+    public Coffee(String urlImg, String coffeeName, String note, String size, String category, String id, String ice, String quantity, String totalPrice, String price, String status) {
         this.urlImg = urlImg;
         this.coffeeName = coffeeName;
         this.note = note;
@@ -16,6 +16,8 @@ public class Coffee {
         this.ice = ice;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
+        this.price = price;
+        this.status = status;
     }
 
     public String getUrlImg() {
@@ -88,5 +90,21 @@ public class Coffee {
 
     public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

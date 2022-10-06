@@ -9,12 +9,18 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.RowRevChatListBinding;
 import com.example.tunashopadmin.model.Chat;
+import com.example.tunashopadmin.model.Message;
 import com.example.tunashopadmin.view.chat_screen.ChatActivity;
+import com.example.tunashopadmin.viewmodel.UnseenMessageViewModel;
 import com.google.firebase.auth.FacebookAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +38,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
 
     private final List<Chat> chatList;
     private final Context context;
-    private String name,imgUser;
+    private String name,imgUser,uidLast,imgRec;
 
     public ChatListAdapter(List<Chat> chatList, Context context) {
         this.chatList = chatList;
@@ -56,13 +62,26 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
         assert user != null;
 //        holder.binding.tvLastMessage.setText(chat.getLastMessage());
         if (user.getUid().equals(chat.getUid())){
-            holder.binding.tvName.setText(chat.getNameReceiver());
-            if (!chat.getImgReceiver().isEmpty()){
-                Picasso.get().load(chat.getImgReceiver()).into(holder.binding.img);
-            }
-            else {
-                holder.binding.img.setImageResource(R.drawable.user);
-            }
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+            reference.child(chat.getUidReceiver()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    imgRec = ""+snapshot.child("imgUser").getValue();
+                    String name = ""+snapshot.child("user_name").getValue();
+                    if (imgRec.isEmpty()){
+                        holder.binding.img.setImageResource(R.drawable.user);
+                    }
+                    else {
+                        Picasso.get().load(imgRec).into(holder.binding.img);
+                    }
+                    holder.binding.tvName.setText(name);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
         else {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
@@ -75,7 +94,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
                         holder.binding.img.setImageResource(R.drawable.user);
                     }
                     else {
-                        Picasso.get().load(chat.getImgReceiver()).into(holder.binding.img);
+                        Picasso.get().load(img).into(holder.binding.img);
                     }
                     holder.binding.tvName.setText(name);
                 }
@@ -92,7 +111,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String lastMessage = ""+snapshot.child("lastMessage").getValue();
-                        String uidLast = ""+snapshot.child("uid").getValue();
+                        uidLast = ""+snapshot.child("uid").getValue();
                         String status = ""+snapshot.child("Status").getValue();
                         if (user.getUid().equals(uidLast)){
                             holder.binding.tvLastMessage.setText(String.format("Bạn: %s", lastMessage));
@@ -125,10 +144,13 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
             }
         });
         holder.itemView.setOnClickListener(v -> {
+            String id = chat.getId();
+            UnseenMessageViewModel viewModel = new ViewModelProvider((ViewModelStoreOwner) context).get(UnseenMessageViewModel.class);
+            viewModel.seenMessage(id,uidLast);
             Intent intent = new Intent(context, ChatActivity.class);
             if (user.getUid().equals(chat.getUid())){
                 intent.putExtra("name",chat.getNameReceiver());
-                intent.putExtra("imgUser",""+chat.getImgReceiver());
+                intent.putExtra("imgUser",""+imgRec);
                 intent.putExtra("uid",chat.getUidReceiver());
             }
             else {

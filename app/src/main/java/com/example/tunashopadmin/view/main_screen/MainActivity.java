@@ -19,6 +19,7 @@ import com.example.tunashopadmin.databinding.ActivityMainBinding;
 import com.example.tunashopadmin.view.add_voucher_screen.AddVoucherActivity;
 import com.example.tunashopadmin.view.chat_screen.ChatFragment;
 import com.example.tunashopadmin.view.main_screen.fragment_order_listt.OrderListFragment;
+import com.example.tunashopadmin.view.menu_manage_screen.ManageMenuFragment;
 import com.example.tunashopadmin.view.staff_manage_screen.StaffManageFragment;
 import com.example.tunashopadmin.view.voucher_screen.VoucherFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity{
     VoucherFragment voucherFragment = new VoucherFragment();
     ChatFragment chatFragment = new ChatFragment();
     StaffManageFragment staffManageFragment = new StaffManageFragment();
+    ManageMenuFragment manageMenuFragment = new ManageMenuFragment();
     Fragment active = orderListFragment;
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity{
         fragmentManager.beginTransaction().add(R.id.container_fragment,voucherFragment,"1").hide(voucherFragment).commit();
         fragmentManager.beginTransaction().add(R.id.container_fragment,chatFragment,"2").hide(chatFragment).commit();
         fragmentManager.beginTransaction().add(R.id.container_fragment,staffManageFragment,"4").hide(staffManageFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.container_fragment,manageMenuFragment,"5").hide(manageMenuFragment).commit();
         binding.navDrawerView.getMenu().findItem(R.id.order_list).setChecked(true);
         inforUser();
         binding.navDrawerView.setNavigationItemSelectedListener(item -> {
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity{
                     binding.searchOrderView.setVisibility(View.GONE);
                     binding.btHelp.setVisibility(View.GONE);
                     binding.titleStaffManage.setVisibility(View.GONE);
+                    binding.titleChat.setVisibility(View.GONE);
                     binding.btAddVoucher.setVisibility(View.VISIBLE);
                     binding.titleVoucher.setVisibility(View.VISIBLE);
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
@@ -79,8 +83,17 @@ public class MainActivity extends AppCompatActivity{
                 case R.id.chat:
                     fragmentManager.beginTransaction().hide(active).show(chatFragment).commit();
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
+                    binding.searchOrderView.setVisibility(View.GONE);
+                    binding.btHelp.setVisibility(View.GONE);
+                    binding.btAddVoucher.setVisibility(View.GONE);
+                    binding.titleVoucher.setVisibility(View.GONE);
+                    binding.titleStaffManage.setVisibility(View.GONE);
+                    binding.titleChat.setVisibility(View.VISIBLE);
                     binding.navDrawerView.getMenu().findItem(R.id.order_list).setChecked(false);
                     binding.navDrawerView.getMenu().findItem(R.id.staff_manager).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.chat).setChecked(true);
+                    binding.navDrawerView.getMenu().findItem(R.id.voucher).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.wallet).setChecked(false);
                     active = chatFragment;
                     return true;
                 case R.id.staff_manager:
@@ -89,6 +102,7 @@ public class MainActivity extends AppCompatActivity{
                     binding.btHelp.setVisibility(View.GONE);
                     binding.btAddVoucher.setVisibility(View.GONE);
                     binding.titleVoucher.setVisibility(View.GONE);
+                    binding.titleChat.setVisibility(View.GONE);
                     binding.titleStaffManage.setVisibility(View.VISIBLE);
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     binding.navDrawerView.getMenu().findItem(R.id.staff_manager).setChecked(true);
@@ -98,6 +112,17 @@ public class MainActivity extends AppCompatActivity{
                     binding.navDrawerView.getMenu().findItem(R.id.wallet).setChecked(false);
                     active = staffManageFragment;
                     return true;
+                case R.id.menu_manager:
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+                    fragmentManager.beginTransaction().hide(active).show(manageMenuFragment).commit();
+                    binding.navDrawerView.getMenu().findItem(R.id.menu_manager).setChecked(true);
+                    binding.navDrawerView.getMenu().findItem(R.id.staff_manager).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.order_list).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.chat).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.voucher).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.wallet).setChecked(false);
+                    active = manageMenuFragment;
+                    return true;
                 case R.id.setting:
                     FirebaseAuth.getInstance().signOut();
                 case R.id.order_list:
@@ -106,6 +131,7 @@ public class MainActivity extends AppCompatActivity{
                     binding.searchOrderView.setVisibility(View.VISIBLE);
                     binding.btHelp.setVisibility(View.VISIBLE);
                     binding.btAddVoucher.setVisibility(View.GONE);
+                    binding.titleChat.setVisibility(View.GONE);
                     binding.titleVoucher.setVisibility(View.GONE);
                     binding.titleStaffManage.setVisibility(View.GONE);
                     binding.drawerLayout.closeDrawer(GravityCompat.START);

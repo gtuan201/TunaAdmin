@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.tunashopadmin.R;
@@ -41,6 +42,8 @@ public class LoginWithEmailActivity extends AppCompatActivity {
                 Toast.makeText(LoginWithEmailActivity.this,"Mật khẩu phải có ít nhất 6 ký tự",Toast.LENGTH_SHORT).show();
             }
             else {
+                InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(binding.btLoginEmail.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
                 progressDialog.show();
                 new Handler().postDelayed(new Runnable() {
                     @Override

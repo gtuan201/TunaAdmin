@@ -1,23 +1,19 @@
 package com.example.tunashopadmin.viewmodel;
 
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
-import com.example.tunashopadmin.model.Message;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 
-import java.util.List;
+import com.example.tunashopadmin.repository.SeenLastMessage;
 
-public class UnseenMessageViewModel extends ViewModel {
-    private final MutableLiveData<List<Message>> unSeenMutableLiveData;
-
-    public UnseenMessageViewModel() {
-        unSeenMutableLiveData = new MutableLiveData<>();
+public class UnseenMessageViewModel extends AndroidViewModel {
+    private SeenLastMessage repository;
+    public UnseenMessageViewModel(@NonNull Application application) {
+        super(application);
+        repository = new SeenLastMessage(application);
     }
-
-    public MutableLiveData<List<Message>> getUnSeenMutableLiveData() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chat");
-        return unSeenMutableLiveData;
+    public void seenMessage(String id, String uidLast){
+        repository.seen(id,uidLast);
     }
 }

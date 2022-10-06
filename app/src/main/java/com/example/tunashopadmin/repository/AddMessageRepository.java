@@ -46,6 +46,8 @@ public class AddMessageRepository {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chat");
         HashMap<String,Object> map = new HashMap<>();
+        assert user != null;
+        map.put("idMessage",""+id+ 1);
         map.put("uid",user.getUid());
         map.put("message",message);
         map.put("Status","UnSeen");
@@ -63,21 +65,5 @@ public class AddMessageRepository {
         reference.child(""+id).updateChildren(hashMap);
         reference.child(""+id).child("Message").child(""+id+ 1 )
                 .updateChildren(map);
-    }
-    public void toast(String id){
-        Toast.makeText(application,id,Toast.LENGTH_SHORT).show();
-    }
-    public void creatRoom(long id,String uidReceiver, String imgReceiver, String nameReceive){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chat");
-        assert user != null;
-        HashMap<String,Object> hashMap = new HashMap<>();
-        hashMap.put("id",""+id);
-        hashMap.put("uid",user.getUid());
-        hashMap.put("uidReceiver",uidReceiver);
-        hashMap.put("imgReceiver",imgReceiver);
-        hashMap.put("nameReceiver",nameReceive);
-        reference.child(""+id).updateChildren(hashMap);
-        reference.child(""+id).child("Message").setValue("");
     }
 }

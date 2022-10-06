@@ -61,4 +61,8 @@
     <string name="select_shop">Chọn địa điểm làm việc</string>
     <string name="list_employee">Danh sách nhân viên</string>
     <string name="delete">Xóa</string>
+    <string name="chat">Trao đổi công việc</string>
+    <string name="list_coffee">Danh sách thức uống</string>
+    <string name="filter">Lọc</string>
+    <string name="add_coffee">Thêm thức uống</string>
 </resources>
