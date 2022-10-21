@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TunaShopAdmin">
         <activity
+            android:name=".view.menu_manage_screen.AddNewCoffeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.menu_manage_screen.CoffeeDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.chat_screen.ChatActivity"
             android:exported="false" />
         <activity

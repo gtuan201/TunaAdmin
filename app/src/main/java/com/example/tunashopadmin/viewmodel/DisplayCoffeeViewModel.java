@@ -30,6 +30,8 @@ public class DisplayCoffeeViewModel extends ViewModel {
                 list.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String img = ""+dataSnapshot.child("ImgUrl").getValue();
+                    String back = ""+dataSnapshot.child("background").getValue();
+                    String des = ""+dataSnapshot.child("description").getValue();
                     String name = ""+dataSnapshot.child("name").getValue();
                     String cate = ""+dataSnapshot.child("category").getValue();
                     String price = ""+dataSnapshot.child("price").getValue();
@@ -40,6 +42,8 @@ public class DisplayCoffeeViewModel extends ViewModel {
                     coffee.setPrice(price);
                     coffee.setCategory(cate);
                     coffee.setStatus(status);
+                    coffee.setBackground(back);
+                    coffee.setDescription(des);
                     list.add(coffee);
                 }
                 coffeeLiveData.postValue(list);

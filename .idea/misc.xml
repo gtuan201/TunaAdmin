@@ -6,6 +6,7 @@
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable-v24/button_custom4.xml" value="0.1485" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable-v24/edit_text_custom2.xml" value="0.1565" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1485" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/add_back.xml" value="0.152" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/background_message.xml" value="0.152" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/background_message2.xml" value="0.152" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/background_voucher_type.xml" value="0.1565" />
@@ -28,9 +29,11 @@
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/radio_button_background.xml" value="0.1565" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/text_checked.xml" value="0.1565" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/drawable/text_selector.xml" value="0.1485" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_add_new_coffee.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_add_voucher.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_cancel_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_chat.xml" value="0.2388888888888889" />
+        <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_coffee_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_creat_user.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/TunaShopAdmin/app/src/main/res/layout/activity_login_with_email.xml" value="0.25416666666666665" />

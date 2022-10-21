@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -44,6 +43,16 @@
                     <TextView
                         android:id="@+id/title_staff_manage"
                         android:text="@string/staff_manage"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_width="250dp"
+                        android:layout_height="30dp"
+                        android:visibility="gone"/>
+                    <TextView
+                        android:id="@+id/title_menu_manage"
+                        android:text="@string/menu_manage"
                         android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold"

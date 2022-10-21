@@ -13,7 +13,6 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import com.example.tunashopadmin.R;
 import com.example.tunashopadmin.databinding.ActivityMainBinding;
 import com.example.tunashopadmin.view.add_voucher_screen.AddVoucherActivity;
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
             switch (item.getItemId()){
                 case R.id.voucher:
                     fragmentManager.beginTransaction().hide(active).show(voucherFragment).commit();
+                    binding.titleMenuManage.setVisibility(View.GONE);
                     binding.searchOrderView.setVisibility(View.GONE);
                     binding.btHelp.setVisibility(View.GONE);
                     binding.titleStaffManage.setVisibility(View.GONE);
@@ -78,11 +78,13 @@ public class MainActivity extends AppCompatActivity{
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     binding.navDrawerView.getMenu().findItem(R.id.order_list).setChecked(false);
                     binding.navDrawerView.getMenu().findItem(R.id.staff_manager).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.menu_manager).setChecked(false);
                     active = voucherFragment;
                     return true;
                 case R.id.chat:
                     fragmentManager.beginTransaction().hide(active).show(chatFragment).commit();
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
+                    binding.titleMenuManage.setVisibility(View.GONE);
                     binding.searchOrderView.setVisibility(View.GONE);
                     binding.btHelp.setVisibility(View.GONE);
                     binding.btAddVoucher.setVisibility(View.GONE);
@@ -94,10 +96,12 @@ public class MainActivity extends AppCompatActivity{
                     binding.navDrawerView.getMenu().findItem(R.id.chat).setChecked(true);
                     binding.navDrawerView.getMenu().findItem(R.id.voucher).setChecked(false);
                     binding.navDrawerView.getMenu().findItem(R.id.wallet).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.menu_manager).setChecked(false);
                     active = chatFragment;
                     return true;
                 case R.id.staff_manager:
                     fragmentManager.beginTransaction().hide(active).show(staffManageFragment).commit();
+                    binding.titleMenuManage.setVisibility(View.GONE);
                     binding.searchOrderView.setVisibility(View.GONE);
                     binding.btHelp.setVisibility(View.GONE);
                     binding.btAddVoucher.setVisibility(View.GONE);
@@ -110,11 +114,19 @@ public class MainActivity extends AppCompatActivity{
                     binding.navDrawerView.getMenu().findItem(R.id.chat).setChecked(false);
                     binding.navDrawerView.getMenu().findItem(R.id.voucher).setChecked(false);
                     binding.navDrawerView.getMenu().findItem(R.id.wallet).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.menu_manager).setChecked(false);
                     active = staffManageFragment;
                     return true;
                 case R.id.menu_manager:
-                    binding.drawerLayout.closeDrawer(GravityCompat.START);
                     fragmentManager.beginTransaction().hide(active).show(manageMenuFragment).commit();
+                    binding.titleMenuManage.setVisibility(View.VISIBLE);
+                    binding.searchOrderView.setVisibility(View.GONE);
+                    binding.btHelp.setVisibility(View.GONE);
+                    binding.btAddVoucher.setVisibility(View.GONE);
+                    binding.titleVoucher.setVisibility(View.GONE);
+                    binding.titleChat.setVisibility(View.GONE);
+                    binding.titleStaffManage.setVisibility(View.GONE);
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
                     binding.navDrawerView.getMenu().findItem(R.id.menu_manager).setChecked(true);
                     binding.navDrawerView.getMenu().findItem(R.id.staff_manager).setChecked(false);
                     binding.navDrawerView.getMenu().findItem(R.id.order_list).setChecked(false);
@@ -130,12 +142,14 @@ public class MainActivity extends AppCompatActivity{
                     fragmentManager.beginTransaction().hide(active).show(orderListFragment).commit();
                     binding.searchOrderView.setVisibility(View.VISIBLE);
                     binding.btHelp.setVisibility(View.VISIBLE);
+                    binding.titleMenuManage.setVisibility(View.GONE);
                     binding.btAddVoucher.setVisibility(View.GONE);
                     binding.titleChat.setVisibility(View.GONE);
                     binding.titleVoucher.setVisibility(View.GONE);
                     binding.titleStaffManage.setVisibility(View.GONE);
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     binding.navDrawerView.getMenu().findItem(R.id.staff_manager).setChecked(false);
+                    binding.navDrawerView.getMenu().findItem(R.id.menu_manager).setChecked(false);
                     active = orderListFragment;
                     return true;
 

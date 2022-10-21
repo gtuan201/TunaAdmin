@@ -65,4 +65,8 @@
     <string name="list_coffee">Danh sách thức uống</string>
     <string name="filter">Lọc</string>
     <string name="add_coffee">Thêm thức uống</string>
+    <string name="menu_manage">Quản lý đồ uống</string>
+    <string name="infor_coffee">Thông tin thức uống</string>
+    <string name="status">Trạng thái</string>
+    <string name="add_back">Thêm background cho đồ uống</string>
 </resources>

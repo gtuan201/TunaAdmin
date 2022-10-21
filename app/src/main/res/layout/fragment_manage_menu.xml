@@ -4,7 +4,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.appcompat.widget.SearchView
+        <EditText
+            android:hint="Nhập tên thức uống..."
+            android:textSize="15sp"
+            android:padding="10dp"
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_margin="10dp"

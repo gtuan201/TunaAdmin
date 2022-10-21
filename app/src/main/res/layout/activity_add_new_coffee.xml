@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <ImageView
+                android:id="@+id/img_background"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:id="@+id/bt_add_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/add_back"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/ic_baseline_add_a_photo_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/add_back"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </RelativeLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/background"
+            android:layout_above="@id/btAddCoffee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+                        <ImageView
+                            android:id="@+id/btAddImg"
+                            android:background="@drawable/add_back"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_add_a_photo_24"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/add_img_coffee"
+                            android:scaleType="centerCrop"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/black"
+                        android:text="Thêm hình đồ uống"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <TextView
+                    android:text="Tên đồ uống"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/name_coffee"
+                    android:hint="Nhập tên đồ uống..."
+                    android:layout_marginTop="3dp"
+                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:background="@drawable/edit_text_custom2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Loại đồ uống"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/category_coffee"
+                    android:hint="Nhập loại đồ uống..."
+                    android:layout_marginTop="3dp"
+                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:background="@drawable/edit_text_custom2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Giá đồ uống (VNĐ)"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/price_coffee"
+                    android:inputType="number"
+                    android:hint="Nhập giá đồ uống..."
+                    android:layout_marginTop="3dp"
+                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:background="@drawable/edit_text_custom2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Mô tả"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/description_coffee"
+                    android:hint="Mô tả..."
+                    android:gravity="start"
+                    android:layout_marginTop="3dp"
+                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:background="@drawable/edit_text_custom2"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+       <androidx.appcompat.widget.AppCompatButton
+           android:text="Thêm thức uống"
+           android:textAllCaps="false"
+           android:textColor="@color/white"
+           android:textSize="17sp"
+           android:id="@+id/btAddCoffee"
+           android:layout_margin="10dp"
+           android:background="@drawable/button_custom4"
+           android:layout_alignParentBottom="true"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</layout>
